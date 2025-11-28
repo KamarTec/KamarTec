@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, ChevronLeft, ChevronRight, Menu, X, Moon, Sun } from 'lucide-react';
+import Link from 'next/link';
 
 export default function KamarTecHomePage() {
   const [heroSlide, setHeroSlide] = useState(0);
@@ -121,9 +122,9 @@ export default function KamarTecHomePage() {
                 <a href="#services" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</a>
                 <a href="#projects" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</a>
                 <a href="#blog" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</a>
-                <a href="#contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</a>
+                <Link href="/contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</Link>
               </nav>
-
+              
               {/* Dark Mode Toggle & Mobile Menu */}
               <div className="flex items-center gap-2 sm:gap-3">
                 <button
