@@ -57,7 +57,7 @@ export default function KamarTecContactPage() {
 
     try {
       // Send to your VPS backend endpoint
-      const response = await fetch('https://your-vps-domain.com/api/contact', {
+      const response = await fetch('https://kamartec.org/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ export default function KamarTecContactPage() {
     } catch (error) {
       setFormStatus({
         type: 'error',
-        message: 'Oops! Something went wrong. Please try again or contact us directly via email.'
+        message: 'Oops! Something went wrong. Please try again or contact us directly via email/phone.'
       });
     } finally {
       setIsSubmitting(false);

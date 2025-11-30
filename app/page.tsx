@@ -2,6 +2,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, ChevronLeft, ChevronRight, Menu, X, Moon, Sun } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function KamarTecHomePage() {
   const [heroSlide, setHeroSlide] = useState(0);
@@ -9,6 +10,14 @@ export default function KamarTecHomePage() {
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,12 +28,46 @@ export default function KamarTecHomePage() {
   }, []);
 
   useEffect(() => {
+    if (!isMounted) return;
+
+    // Check system preference and localStorage for dark mode
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode) {
+      setDarkMode(savedMode === 'true');
+    } else {
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(systemPrefersDark);
+    }
+  }, [isMounted]);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
     }
-  }, [darkMode]);
+  }, [darkMode, isMounted]);
+
+  useEffect(() => {
+    // Add intersection observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.scroll-animate').forEach(el => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const testimonials = [
     {
@@ -48,20 +91,79 @@ export default function KamarTecHomePage() {
   ];
 
   const teamMembers = [
-    { name: "Clement Obeng", role: "Lead Web Developer", image: "/images/team/Clement.jpg" },
-    { name: "Emmanuel Kofi Frimpong", role: "Lead Designer", image: "/images/team/Emmanuel.jpg" },
-    { name: "Gerald Boakye", role: "Web Developer", image: "/images/team/Gerald.jpg" },
-    { name: "Elvis Osei Bonsu", role: "Web Developer", image: "/images/team/Elvis.jpg" },
-    { name: "Francis Agyei Mensah", role: "Data Analyst", image: "/images/team/Francis.jpg" },
-    { name: "Albert Segu", role: "Data Analyst", image: "/images/team/Albert.jpg" }
+    { id: 1, name: "Clement Obeng", role: "Lead Web Developer", image: "/images/team/Clement.jpg" },
+    { id: 2, name: "Emmanuel Kofi Frimpong", role: "Lead Designer", image: "/images/team/Emmanuel.jpg" },
+    { id: 3, name: "Gerald Boakye", role: "Web Developer", image: "/images/team/Gerald.jpg" },
+    { id: 4, name: "Elvis Osei Bonsu", role: "Web Developer", image: "/images/team/Elvis.jpg" },
+    { id: 5, name: "Francis Agyei Mensah", role: "Data Analyst", image: "/images/team/Francis.jpg" },
+    { id: 6, name: "Albert Segu", role: "Data Analyst", image: "/images/team/Albert.jpg" }
   ];
 
   const services = [
-    { title: "Software Dev't", color: "from-purple-600 to-orange-400", image: "/images/services/software_dev.jpg" },
-    { title: "Mobile Apps", color: "from-pink-500 to-orange-400", image: "/images/services/mobile_apps.jpg" },
-    { title: "Graphic Design", color: "from-pink-600 to-purple-600", image: "/images/services/graphic_design.jpg" },
-    { title: "Web Design", color: "from-orange-500 to-red-500", image: "/images/services/web_design.jpg" }
+    { id: 1, title: "Software Dev't", color: "from-purple-600 to-orange-400", image: "/images/services/software_dev.jpg" },
+    { id: 2, title: "Mobile Apps", color: "from-pink-500 to-orange-400", image: "/images/services/mobile_apps.jpg" },
+    { id: 3, title: "Graphic Design", color: "from-pink-600 to-purple-600", image: "/images/services/graphic_design.jpg" },
+    { id: 4, title: "Web Design", color: "from-orange-500 to-red-500", image: "/images/services/web_design.jpg" }
   ];
+
+  const portfolioItems = [
+    { id: 1, title: "FocusPal", description: "Students Partner", image: "/images/portfolio/focuspal.png" },
+    { id: 2, title: "Sellzan", description: "Customers Aid", image: "/images/portfolio/sellzan.png" }
+  ];
+
+  const searchableItems = [
+    ...services.map(service => ({ type: 'service', id: service.id, title: service.title, section: 'services' })),
+    ...teamMembers.map(member => ({ type: 'team', id: member.id, title: member.name, section: 'team' })),
+    ...portfolioItems.map(item => ({ type: 'portfolio', id: item.id, title: item.title, section: 'projects' })),
+    { type: 'page', id: 'about', title: 'About Us', section: 'about' },
+    { type: 'page', id: 'blog', title: 'Blog', section: 'blog' },
+    { type: 'page', id: 'contact', title: 'Contact', section: 'contact' },
+    { type: 'page', id: 'home', title: 'Home', section: 'home' }
+  ];
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
+
+    setIsSearching(true);
+    
+    // Safe search with proper error handling
+    const results = searchableItems.filter(item => {
+      try {
+        const itemTitle = item.title || '';
+        const query = searchQuery.toLowerCase();
+        return itemTitle.toLowerCase().includes(query);
+      } catch (error) {
+        console.error('Search error:', error);
+        return false;
+      }
+    });
+
+    if (results.length > 0) {
+      const firstResult = results[0];
+      const element = document.getElementById(firstResult.section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If no results, show a subtle notification (you can enhance this)
+      console.log('No results found for:', searchQuery);
+    }
+    
+    setTimeout(() => setIsSearching(false), 1000);
+  };
+
+  const handlePortfolioClick = (id: number) => {
+    // For now, just scroll to portfolio section
+    // Later, you can navigate to detail page: router.push(`/portfolio/${id}`);
+    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleTeamMemberClick = (id: number) => {
+    // For now, just scroll to team section
+    // Later, you can navigate to detail page: router.push(`/team/${id}`);
+    document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   const nextTestimonial = () => {
     setTestimonialIndex((prev) => (prev + 1) % testimonials.length);
@@ -74,6 +176,23 @@ export default function KamarTecHomePage() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-900 dark:text-white">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className={`min-h-screen ${darkMode ? 'dark' : ''}`}>
@@ -89,7 +208,7 @@ export default function KamarTecHomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <div className="flex items-center gap-2 cursor-pointer transform hover:scale-105 transition-transform duration-300">
+              <Link href="/" className="flex items-center gap-2 cursor-pointer transform hover:scale-105 transition-transform duration-300">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl overflow-hidden shadow-lg">
                   <img 
                     src="/images/logo/favicon.png" 
@@ -101,27 +220,35 @@ export default function KamarTecHomePage() {
                   <div className="font-bold text-gray-900 dark:text-white text-base sm:text-lg">KamarTec</div>
                   <div className="text-xs text-gray-600 dark:text-gray-400 tracking-wider">SOLUTIONS</div>
                 </div>
-              </div>
+              </Link>
 
               {/* Desktop Search */}
               <div className="hidden lg:flex items-center gap-2 flex-1 max-w-md mx-8">
-                <div className="relative flex-1 group">
+                <form onSubmit={handleSearch} className="relative flex-1 group">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-purple-600 transition-colors duration-300" size={18} />
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Looking for something?"
                     className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-300"
                   />
-                </div>
+                  <button 
+                    type="submit"
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-purple-600 transition-colors"
+                  >
+                    <ArrowRight size={18} />
+                  </button>
+                </form>
               </div>
 
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center gap-4 lg:gap-6">
-                <a href="#home" className="text-sm lg:text-base text-red-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-500">Home</a>
-                <a href="#about" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</a>
-                <a href="#services" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</a>
-                <a href="#projects" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</a>
-                <a href="#blog" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</a>
+                <button onClick={() => scrollToSection('home')} className="text-sm lg:text-base text-red-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-500">Home</button>
+                <button onClick={() => scrollToSection('about')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</button>
+                <button onClick={() => scrollToSection('services')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</button>
+                <button onClick={() => scrollToSection('projects')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</button>
+                <button onClick={() => scrollToSection('blog')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</button>
                 <Link href="/contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</Link>
               </nav>
               
@@ -148,20 +275,22 @@ export default function KamarTecHomePage() {
             {/* Mobile Menu */}
             <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'}`}>
               <div className="py-4 space-y-3 border-t border-gray-200 dark:border-gray-700">
-                <div className="relative mb-3">
+                <form onSubmit={handleSearch} className="relative mb-3">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search..."
                     className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                   />
-                </div>
-                <a href="#home" className="block py-2 text-red-500 font-medium">Home</a>
-                <a href="#about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">About</a>
-                <a href="#services" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Services</a>
-                <a href="#projects" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Projects</a>
-                <a href="#blog" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Blog</a>
-                <a href="#contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Contact</a>
+                </form>
+                <button onClick={() => scrollToSection('home')} className="block py-2 text-red-500 font-medium w-full text-left">Home</button>
+                <button onClick={() => scrollToSection('about')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">About</button>
+                <button onClick={() => scrollToSection('services')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Services</button>
+                <button onClick={() => scrollToSection('projects')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Projects</button>
+                <button onClick={() => scrollToSection('blog')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Blog</button>
+                <Link href="/contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Contact</Link>
               </div>
             </div>
           </div>
@@ -197,7 +326,7 @@ export default function KamarTecHomePage() {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 w-full">
             {/* Slide 1 */}
             <div className={`transition-all duration-700 transform ${heroSlide === 0 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full absolute'}`}>
-              <div className="max-w-2xl">
+              <div className="max-w-2xl scroll-animate">
                 <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-6 animate-fade-in">
                   <span className="bg-red-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium shadow-lg">KAMARTEC</span>
                   <span className="text-white font-medium text-xs sm:text-base">SOLUTIONS</span>
@@ -225,7 +354,7 @@ export default function KamarTecHomePage() {
 
             {/* Slide 2 */}
             <div className={`transition-all duration-700 transform ${heroSlide === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full absolute'}`}>
-              <div className="max-w-2xl">
+              <div className="max-w-2xl scroll-animate">
                 <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-6">
                   <span className="bg-red-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium shadow-lg">KAMARTEC</span>
                   <span className="text-white font-medium text-xs sm:text-base">SOLUTIONS</span>
@@ -254,7 +383,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 relative overflow-hidden">
+        <section id="about" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-900 relative overflow-hidden scroll-animate">
           <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-blue-700 dark:from-blue-900 to-transparent opacity-20"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
@@ -299,7 +428,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <section id="services" className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-gray-900 relative overflow-hidden scroll-animate">
           <div className="absolute top-20 right-0 w-96 h-96 bg-purple-100 dark:bg-purple-900 rounded-full filter blur-3xl opacity-30"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="mb-12 sm:mb-16 text-center">
@@ -316,7 +445,7 @@ export default function KamarTecHomePage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
               {services.map((service, index) => (
                 <div 
-                  key={index}
+                  key={service.id}
                   className="group relative overflow-hidden rounded-3xl h-64 sm:h-80 lg:h-96 cursor-pointer transform hover:scale-105 transition-all duration-500"
                   style={{ 
                     transform: index % 2 === 0 ? 'rotate(-1deg)' : 'rotate(1deg)' 
@@ -347,7 +476,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* Portfolio Section */}
-        <section id="projects" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-blue-700 via-blue-600 to-purple-700 dark:from-blue-900 dark:via-blue-800 dark:to-purple-900 relative overflow-hidden">
+        <section id="projects" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-blue-700 via-blue-600 to-purple-700 dark:from-blue-900 dark:via-blue-800 dark:to-purple-900 relative overflow-hidden scroll-animate">
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
@@ -374,43 +503,30 @@ export default function KamarTecHomePage() {
               </div>
             </div>
 
-<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {/* Portfolio Card 1 */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-500 group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src="/images/portfolio/focuspal.png" 
-                    alt="FocusPal" 
-                    className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {/* Portfolio Cards */}
+              {portfolioItems.map((item, index) => (
+                <div 
+                  key={item.id}
+                  onClick={() => handlePortfolioClick(item.id)}
+                  className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-500 group cursor-pointer"
+                >
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </div>
+                  <div className="p-6 sm:p-8">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg">{item.description}</p>
+                  </div>
                 </div>
-                <div className="p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">FocusPal</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg">Students Partner</p>
-                </div>
-              </div>
-
-              {/* Portfolio Card 2 */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-500 group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src="/images/portfolio/sellzan.png" 
-                    alt="Sellzan" 
-                    className="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" 
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
-                <div className="p-6 sm:p-8">
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">Sellzan</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg">Customers Aid</p>
-                </div>
-              </div>
-
-               
-            </div> 
+              ))}
+            </div>
 
             <div className="text-center mt-12 sm:mt-16">
               <button className="border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-blue-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
@@ -421,7 +537,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* Team Section */}
-        <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-purple-700 via-purple-600 to-blue-600 dark:from-purple-900 dark:via-purple-800 dark:to-blue-800 relative overflow-hidden">
+        <section id="team" className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-purple-700 via-purple-600 to-blue-600 dark:from-purple-900 dark:via-purple-800 dark:to-blue-800 relative overflow-hidden scroll-animate">
           {/* Background with lines image */}
           <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0" style={{
@@ -448,8 +564,9 @@ export default function KamarTecHomePage() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {teamMembers.map((member, index) => (
                 <div 
-                  key={index}
-                  className="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 text-center hover:transform hover:scale-105 transition-all duration-500 shadow-2xl"
+                  key={member.id}
+                  onClick={() => handleTeamMemberClick(member.id)}
+                  className="bg-white dark:bg-gray-800 rounded-3xl p-6 sm:p-8 text-center hover:transform hover:scale-105 transition-all duration-500 shadow-2xl cursor-pointer"
                   style={{
                     transform: index % 3 === 0 ? 'rotate(-2deg)' : index % 3 === 1 ? 'rotate(0deg)' : 'rotate(2deg)'
                   }}
@@ -483,7 +600,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-orange-100 via-purple-100 to-purple-200 dark:from-gray-800 dark:via-gray-900 dark:to-purple-900 relative overflow-hidden">
+        <section className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-orange-100 via-purple-100 to-purple-200 dark:from-gray-800 dark:via-gray-900 dark:to-purple-900 relative overflow-hidden scroll-animate">
           <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-b from-purple-600 dark:from-purple-800 to-transparent opacity-10"></div>
           <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="relative">
@@ -528,7 +645,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* Blog Section */}
-        <section id="blog" className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <section id="blog" className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-gray-900 relative overflow-hidden scroll-animate">
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-100 dark:bg-pink-900 rounded-full filter blur-3xl opacity-40"></div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
             <div className="mb-12 sm:mb-16">
@@ -598,7 +715,7 @@ export default function KamarTecHomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-24 sm:py-32 lg:py-40 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 dark:from-purple-800 dark:via-purple-900 dark:to-gray-900 relative overflow-hidden">
+        <section className="py-24 sm:py-32 lg:py-40 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 dark:from-purple-800 dark:via-purple-900 dark:to-gray-900 relative overflow-hidden scroll-animate">
           {/* CTA Bubbles Background Image */}
           <div className="absolute inset-0 opacity-30">
             <div className="absolute top-0 left-0 w-full h-full" style={{
@@ -617,14 +734,14 @@ export default function KamarTecHomePage() {
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-8 sm:mb-10 leading-tight">
               Let's Find The Solution<br />To Your Project
             </h2>
-            <button className="bg-yellow-400 text-gray-900 px-10 sm:px-12 py-4 sm:py-5 rounded-full font-bold hover:bg-yellow-300 hover:shadow-2xl hover:scale-110 transition-all duration-300 text-lg sm:text-xl">
+            <Link href="/contact" className="bg-yellow-400 text-gray-900 px-10 sm:px-12 py-4 sm:py-5 rounded-full font-bold hover:bg-yellow-300 hover:shadow-2xl hover:scale-110 transition-all duration-300 text-lg sm:text-xl inline-block">
               START NOW
-            </button>
+            </Link>
           </div>
         </section>
 
         {/* Footer */}
-        <footer id="contact" className="bg-white dark:bg-gray-900 py-16 sm:py-20">
+        <footer id="contact" className="bg-white dark:bg-gray-900 py-16 sm:py-20 scroll-animate">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-12 sm:mb-16">
               {/* Company Info */}
@@ -663,11 +780,11 @@ export default function KamarTecHomePage() {
               <div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-6 text-lg">Company</h3>
                 <ul className="space-y-4">
-                  <li><a href="#home" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Home</a></li>
-                  <li><a href="#about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">About</a></li>
-                  <li><a href="#services" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Services</a></li>
-                  <li><a href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Projects</a></li>
-                  <li><a href="#blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Blogs</a></li>
+                  <li><button onClick={() => scrollToSection('home')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Home</button></li>
+                  <li><button onClick={() => scrollToSection('about')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">About</button></li>
+                  <li><button onClick={() => scrollToSection('services')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Services</button></li>
+                  <li><button onClick={() => scrollToSection('projects')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Projects</button></li>
+                  <li><button onClick={() => scrollToSection('blog')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Blogs</button></li>
                 </ul>
               </div>
 
@@ -742,6 +859,19 @@ export default function KamarTecHomePage() {
           }
           .animate-slide-up {
             animation: slide-up 0.6s ease-out;
+          }
+          @keyframes fade-in-up {
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out;
           }
           .animation-delay-200 {
             animation-delay: 0.2s;
