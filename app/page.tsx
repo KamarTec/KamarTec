@@ -418,10 +418,10 @@ export default function KamarTecHomePage() {
                 <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
                   Advertising your products and services through catchy designs by our graphic designers to repairing any faulty computer device. We equip individuals with the skills in tech to make an impact in society.
                 </p>
-                <button className="bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 group text-sm sm:text-base">
-                  MORE ABOUT US
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                <Link href="/about" className="bg-purple-600 text-white px-6 sm:px-4 py-3 sm:py-4 rounded-full font-medium hover:bg-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 group text-sm sm:text-base">
+  MORE ABOUT US
+  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+</Link>
               </div>
             </div>
           </div>
