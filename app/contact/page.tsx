@@ -422,7 +422,7 @@ export default function KamarTecContactPage() {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
-                    rows="6"
+                    rows={6}
                     className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all resize-none"
                     placeholder="Tell us more about your project..."
                   ></textarea>
