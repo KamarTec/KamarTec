@@ -316,10 +316,11 @@ export default function KamarTecContactPage() {
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen=""
+                  allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className="grayscale-0 dark:grayscale hover:grayscale-0 transition-all duration-300"
+                  title="KamarTec Location Map"
                 ></iframe>
               </div>
             </div>
