@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Mail, Phone, ArrowLeft, CheckCircle, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, Zap, Users, Calendar, Award, Shield, Star, FileText, } from 'lucide-react';
 
@@ -141,7 +142,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     );
   }
 
-  const relatedServices = services.filter(s => s.id !== params.id).slice(0, 3);
+  const relatedServices = services.filter(s => s.id !== id).slice(0, 3);
   
   const processSteps = [
     { title: "Discovery", desc: "We analyze your requirements and goals", icon: Users },
