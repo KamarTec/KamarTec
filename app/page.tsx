@@ -72,13 +72,13 @@ export default function KamarTecHomePage() {
   const testimonials = [
     {
       name: "Gerald Boakye",
-      role: "Web Developer",
+      role: "Front-end Developer",
       quote: "There is no advice better than take this money. If you can't propose yourself to ladies, just get money and it will do the talking for you.",
       image: "/images/team/Gerald.jpg"
     },
     {
       name: "Clement Obeng",
-      role: "Lead Web Developer",
+      role: "Lead Developer",
       quote: "Innovation distinguishes between a leader and a follower. Always push boundaries.",
       image: "/images/team/Clement.jpg"
     },
@@ -91,10 +91,10 @@ export default function KamarTecHomePage() {
   ];
 
   const teamMembers = [
-    { id: 1, name: "Clement Obeng", role: "Lead Web Developer", image: "/images/team/Clement.jpg" },
+    { id: 1, name: "Clement Obeng", role: "Lead Developer", image: "/images/team/Clement.jpg" },
     { id: 2, name: "Emmanuel Kofi Frimpong", role: "Lead Designer", image: "/images/team/Emmanuel.jpg" },
-    { id: 3, name: "Gerald Boakye", role: "Web Developer", image: "/images/team/Gerald.jpg" },
-    { id: 4, name: "Elvis Osei Bonsu", role: "Web Developer", image: "/images/team/Elvis.jpg" },
+    { id: 3, name: "Gerald Boakye", role: "Front-end Developer", image: "/images/team/Gerald.jpg" },
+    { id: 4, name: "Elvis Osei Bonsu", role: "Developer", image: "/images/team/Elvis.jpg" },
     { id: 5, name: "Francis Agyei Mensah", role: "Data Analyst", image: "/images/team/Francis.jpg" },
     { id: 6, name: "Albert Segu", role: "Data Analyst", image: "/images/team/Albert.jpg" }
   ];
@@ -245,9 +245,9 @@ export default function KamarTecHomePage() {
               {/* Desktop Navigation */}
               <nav className="hidden md:flex items-center gap-4 lg:gap-6">
                 <button onClick={() => scrollToSection('home')} className="text-sm lg:text-base text-red-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-500">Home</button>
-                <button onClick={() => scrollToSection('about')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</button>
+                <Link href="/about" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</Link>
                 <button onClick={() => scrollToSection('services')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</button>
-                <button onClick={() => scrollToSection('projects')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</button>
+                <Link href="/portfolio" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</Link>
                 <button onClick={() => scrollToSection('blog')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</button>
                 <Link href="/contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</Link>
               </nav>
@@ -286,9 +286,9 @@ export default function KamarTecHomePage() {
                   />
                 </form>
                 <button onClick={() => scrollToSection('home')} className="block py-2 text-red-500 font-medium w-full text-left">Home</button>
-                <button onClick={() => scrollToSection('about')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">About</button>
+                <Link href="/about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">About</Link>
                 <button onClick={() => scrollToSection('services')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Services</button>
-                <button onClick={() => scrollToSection('projects')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Projects</button>
+                <Link href="/portfolio" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Projects</Link>
                 <button onClick={() => scrollToSection('blog')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Blog</button>
                 <Link href="/contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Contact</Link>
               </div>
@@ -529,9 +529,9 @@ export default function KamarTecHomePage() {
             </div>
 
             <div className="text-center mt-12 sm:mt-16">
-              <button className="border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-blue-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
+              <Link href="/portfolio" className="border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-blue-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
                 VIEW ALL PORTFOLIO <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -592,9 +592,9 @@ export default function KamarTecHomePage() {
             </div>
 
             <div className="text-center mt-12 sm:mt-16">
-              <button className="bg-yellow-400 text-gray-900 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-yellow-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
+              <Link href="/team" className="bg-yellow-400 text-gray-900 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-yellow-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
                 VIEW ALL MEMBERS <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>
