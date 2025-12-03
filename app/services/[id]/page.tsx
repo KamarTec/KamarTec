@@ -1,13 +1,13 @@
 "use client";
-"use client";
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
-import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Mail, Phone, ArrowLeft, CheckCircle, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, Zap, Users, Calendar, Award, Shield, Star, FileText, } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Mail, Phone, ArrowLeft, CheckCircle, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, Zap, Users, Calendar, Award, Shield, Star, FileText } from "lucide-react";
 
-export default async function ServiceDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const [scrollY, setScrollY] = useState(0);
+export default function ServiceDetailPage() {
+  const params = useParams();
+  const id = params.id as string;
+    const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
