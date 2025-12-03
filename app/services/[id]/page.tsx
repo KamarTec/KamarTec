@@ -1,6 +1,7 @@
 "use client";
 "use client";
-import React, { useState, useEffect, use } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Mail, Phone, ArrowLeft, CheckCircle, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, Zap, Users, Calendar, Award, Shield, Star, FileText, } from 'lucide-react';
 
