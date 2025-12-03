@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, CheckCircle, Star, Zap, Shield, Users, Target, Clock, Award } from 'lucide-react';
+import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, CheckCircle, Star, Zap, Shield, Users, Target, Clock, Award, Phone } from 'lucide-react';
 
 export default function ServicesPage() {
   const [scrollY, setScrollY] = useState(0);
