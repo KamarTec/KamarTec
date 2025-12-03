@@ -71,12 +71,6 @@ export default function KamarTecHomePage() {
 
   const testimonials = [
     {
-      name: "Gerald Boakye",
-      role: "Front-end Developer",
-      quote: "There is no advice better than take this money. If you can't propose yourself to ladies, just get money and it will do the talking for you.",
-      image: "/images/team/Gerald.jpg"
-    },
-    {
       name: "Clement Obeng",
       role: "Lead Developer",
       quote: "Innovation distinguishes between a leader and a follower. Always push boundaries.",
@@ -87,6 +81,18 @@ export default function KamarTecHomePage() {
       role: "Lead Designer",
       quote: "Design is not just what it looks like. Design is how it works and feels.",
       image: "/images/team/Emmanuel.jpg"
+    },
+    {
+      name: "Elvis Osei Bonsu",
+      role: "Developer",
+      quote: "Whenever you feel stuck, push past your limits, and you’ll overcome any challenge.",
+      image: "/images/team/Elvis.jpg"
+    },
+    {
+      name: "Gerald Boakye",
+      role: "Front-end Developer",
+      quote: "There is no advice better than take this money. If you can't propose yourself to ladies, just get money and it will do the talking for you.",
+      image: "/images/team/Gerald.jpg"
     }
   ];
 
@@ -246,9 +252,10 @@ export default function KamarTecHomePage() {
               <nav className="hidden md:flex items-center gap-4 lg:gap-6">
                 <button onClick={() => scrollToSection('home')} className="text-sm lg:text-base text-red-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-500">Home</button>
                 <Link href="/about" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</Link>
-                <button onClick={() => scrollToSection('services')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</button>
+                <Link href="/services" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</Link>
+                <Link href="/team" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Team</Link>
                 <Link href="/portfolio" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</Link>
-                <button onClick={() => scrollToSection('blog')} className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</button>
+                <Link href="/blog" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</Link>
                 <Link href="/contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</Link>
               </nav>
               
@@ -287,9 +294,10 @@ export default function KamarTecHomePage() {
                 </form>
                 <button onClick={() => scrollToSection('home')} className="block py-2 text-red-500 font-medium w-full text-left">Home</button>
                 <Link href="/about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">About</Link>
-                <button onClick={() => scrollToSection('services')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Services</button>
+                <Link href="/services" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Services</Link>
                 <Link href="/portfolio" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Projects</Link>
-                <button onClick={() => scrollToSection('blog')} className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Blog</button>
+                <Link href="/team" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Team</Link>
+                <Link href="/blog" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 w-full text-left">Blog</Link>
                 <Link href="/contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Contact</Link>
               </div>
             </div>
@@ -468,9 +476,9 @@ export default function KamarTecHomePage() {
             </div>
 
             <div className="text-center">
-              <button className="bg-red-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-red-600 hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+              <Link href="/services" className="bg-red-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-red-600 hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
                 ALL SERVICES
-              </button>
+              </Link>
             </div>
           </div>
         </section>
@@ -780,11 +788,11 @@ export default function KamarTecHomePage() {
               <div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-6 text-lg">Company</h3>
                 <ul className="space-y-4">
-                  <li><button onClick={() => scrollToSection('home')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Home</button></li>
-                  <li><button onClick={() => scrollToSection('about')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">About</button></li>
-                  <li><button onClick={() => scrollToSection('services')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Services</button></li>
-                  <li><button onClick={() => scrollToSection('projects')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Projects</button></li>
-                  <li><button onClick={() => scrollToSection('blog')} className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Blogs</button></li>
+                  <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Home</Link>
+                  <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">About</Link>
+                  <Link href="/services" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Services</Link>
+                  <Link href="/projects" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Projects</Link>
+                  <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Blogs</Link>
                 </ul>
               </div>
 
