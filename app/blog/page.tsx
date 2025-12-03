@@ -64,7 +64,7 @@ export default function BlogPage() {
       readTime: "8 min read",
       category: "Web Development",
       tags: ["React", "Next.js", "AI", "Trends"],
-      image: "/images/blog/web-dev-future.jpg",
+      image: "/images/blog/futuredev.jpg",
       featured: true
     },
     {
@@ -79,8 +79,8 @@ export default function BlogPage() {
       readTime: "6 min read",
       category: "Design",
       tags: ["UI/UX", "Design", "Best Practices"],
-      image: "/images/blog/design-principles.jpg",
-      featured: false
+      image: "/images/blog/design.jpg",
+      featured: true
     },
     {
       id: 'data-analytics-business-growth',
@@ -94,7 +94,7 @@ export default function BlogPage() {
       readTime: "7 min read",
       category: "Data Analytics",
       tags: ["Analytics", "Business", "Growth"],
-      image: "/images/blog/data-analytics.jpg",
+      image: "/images/blog/data.jpg",
       featured: false
     },
     {
@@ -109,7 +109,7 @@ export default function BlogPage() {
       readTime: "10 min read",
       category: "Web Development",
       tags: ["React", "Vue", "JavaScript", "Frameworks"],
-      image: "/images/blog/react-vs-vue.jpg",
+      image: "/images/blog/react-vs-vue.png",
       featured: true
     },
     {
@@ -124,7 +124,7 @@ export default function BlogPage() {
       readTime: "9 min read",
       category: "Mobile Development",
       tags: ["Mobile", "Apps", "Trends", "Flutter"],
-      image: "/images/blog/mobile-trends.jpg",
+      image: "/images/blog/mobile-trends.png",
       featured: false
     },
     {
@@ -139,7 +139,7 @@ export default function BlogPage() {
       readTime: "5 min read",
       category: "Design",
       tags: ["Responsive", "Mobile-First", "Web Design"],
-      image: "/images/blog/responsive-design.jpg",
+      image: "/images/blog/responsive-design.png",
       featured: false
     },
     {
@@ -169,7 +169,7 @@ export default function BlogPage() {
       readTime: "6 min read",
       category: "Data Analytics",
       tags: ["Visualization", "Data", "Analytics"],
-      image: "/images/blog/data-viz.jpg",
+      image: "/images/blog/data-viz.png",
       featured: false
     }
   ];
@@ -265,7 +265,7 @@ export default function BlogPage() {
                 <Link href="/" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Home</Link>
                 <Link href="/about" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</Link>
                 <Link href="/services" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</Link>
-                <Link href="/projects" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</Link>
+                <Link href="/portfolio" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</Link>
                 <Link href="/team" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Team</Link>
                 <Link href="/blog" className="text-sm lg:text-base text-red-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-500">Blog</Link>
                 <Link href="/contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</Link>
@@ -307,7 +307,7 @@ export default function BlogPage() {
                 <Link href="/" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Home</Link>
                 <Link href="/about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">About</Link>
                 <Link href="/services" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Services</Link>
-                <Link href="/projects" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Projects</Link>
+                <Link href="/portfolio" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Projects</Link>
                 <Link href="/team" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Team</Link>
                 <Link href="/blog" className="block py-2 text-red-500 font-medium">Blog</Link>
                 <Link href="/contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Contact</Link>

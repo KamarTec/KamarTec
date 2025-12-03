@@ -63,7 +63,7 @@ export default function KamarTecProjectsPage() {
       description: 'NOVA is a multilingual, culturally-aware AI assistant built for Africa. It offers personalized assistance, local insights, and supports various African languages to enhance user experience.',
       category: 'AI',
       tags: ['Python', 'Flutter', 'AI'],
-      image: '/images/portfolio/nova.png',
+      image: '/images/portfolio/nova.jpg',
       color: 'from-orange-500 to-red-500'
     },
     {
@@ -73,7 +73,7 @@ export default function KamarTecProjectsPage() {
         description: 'SwapMate is a user-friendly platform that facilitates item swapping among users, promoting sustainability and community engagement through easy-to-use features.',
         category: 'Web App',
         tags: ['React', 'Node.js', 'Sustainability'],
-        image: '/images/portfolio/swapmate.png',
+        image: '/images/portfolio/unavailable.png',
         color: 'from-green-500 to-teal-500'
     }
   ];

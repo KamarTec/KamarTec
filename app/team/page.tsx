@@ -287,14 +287,15 @@ export default function TeamPage() {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   {/* Image */}
-                  <div className="relative overflow-hidden h-64">
-                    <img 
-                      src={member.image} 
+                  <div className="relative overflow-hidden h-64 bg-black">
+                    <img
+                      src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 to-transparent"></div>
                   </div>
+
 
                   {/* Content */}
                   <div className="p-6">

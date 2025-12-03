@@ -51,97 +51,98 @@ export default function FocusPalProjectDetail() {
     setDarkMode(!darkMode);
   };
 
-  const projectData = {
-  title: 'FocusPal',
-  tagline: 'Study Smarter. Stay Organized. Stay Consistent.',
-  category: 'Mobile & Web Application',
+ const projectData = {
+  title: 'SellZan: Get Busy • Get Social',
+  tagline: 'Buy & Sell Safely — The Student Marketplace You Can Trust.',
+  category: 'Mobile Application',
   client: 'KamarTec',
   duration: 'Ongoing (2024 — Present)',
   team: '2 Developers + 1 Designer',
   technologies: [
     'Flutter',
     'Node.js',
-    'PostgreSQL',
-    'Prisma ORM',
+    'Express.js',
+    'MongoDB',
     'JWT Authentication',
-    'Cloud Storage'
+    'Cloud Storage',
+    'WebSockets'
   ],
-  heroImage: '/images/portfolio/focuspal.png',
+  heroImage: '/images/portfolio/sellzan.png',
 
   overview:
-    'FocusPal is an AI-powered study and productivity companion built for university students. It helps users plan courses, track tasks and assignments, manage study files, record notes, monitor focus time, and stay consistent with streaks and goals. With an integrated AI study assistant, FocusPal allows students to upload lecture slides, generate summaries and quizzes, and receive personalized academic support.',
+    'SellZan is a social commerce platform designed for university students in Ghana. It solves the growing problem of scam sellers by introducing secure escrow payments, verified seller profiles, live video selling, and a trusted review system. SellZan provides a safe and smart way for students to buy and sell items on campus and beyond.',
 
   challenge:
-    'Students often juggle multiple courses, deadlines, notes, files, and exams. Most productivity apps are generic and fail to understand academic workflows. Our challenge was to build a system specifically designed for students—something that combines task management, study planning, file organization, and AI assistance in one seamless experience.',
+    'Online buying and selling in Ghana—especially among students—is filled with trust issues. Fake sellers, ghost deliveries, and payment fraud have become common. Existing platforms lack identity verification and offer no transaction security. The challenge was to design a marketplace where every transaction is secure, every seller is authentic, and students can shop with confidence.',
 
   solution:
-    'FocusPal was built as a complete academic ecosystem. Students can add courses, create tasks and deadlines, upload slides, track focus time using a pomodoro timer, organize notes, create flashcards, monitor study streaks, and automatically generate AI summaries and quizzes. The backend uses Laravel and PostgreSQL, while the AI features run on a custom Node.js pipeline for real-time chat and file-aware responses.',
+    'SellZan introduces escrow payments, where money is held securely until the buyer receives their item. Sellers go through an ID verification process, and buyers can request live video proof before purchasing. With features like real-time chat, product categories, campus-based delivery filters, and secure payments, SellZan creates a safe marketplace tailored to the university ecosystem.',
 
   features: [
     {
-      icon: Calendar,
-      title: 'Course & Task Manager',
+      icon: Shield,
+      title: 'Escrow Payments',
       description:
-        'Add courses, create assignments, set deadlines, manage tasks with priorities, reminders, and completion tracking.'
-    },
-    {
-      icon: Smartphone,
-      title: 'Focus Timer',
-      description:
-        'Built-in Pomodoro timer with custom focus/break durations, distraction blocking, ambient sounds, and focus statistics.'
+        'Payments are held securely until the buyer confirms the item has been received, preventing scams.'
     },
     {
       icon: Users,
-      title: 'AI Study Assistant',
+      title: 'Verified Sellers',
       description:
-        'Upload lecture slides or notes and ask the AI to summarize, explain concepts, or generate quizzes from your documents.'
+        'Sellers are verified using ID and student status to ensure safety and authenticity.'
+    },
+    {
+      icon: Smartphone,
+      title: 'Live Video Selling',
+      description:
+        'Buyers can request real-time video proof of items to avoid fake or misleading products.'
     },
     {
       icon: Zap,
-      title: 'Flashcards & Notes',
+      title: 'Instant Chat',
       description:
-        'Create flashcards or detailed notes for any course. Organize them by topic and quickly revise anytime.'
+        'Real-time messaging between buyers and sellers with support for images and product details.'
     },
     {
       icon: Star,
-      title: 'Progress & Analytics',
+      title: 'Ratings & Reviews',
       description:
-        'Track focus minutes, streaks, task completion rate, and study patterns using clean charts and analytics.'
+        'Buyers can rate sellers and leave reviews, building trust within the student community.'
     },
     {
-      icon: Shield,
-      title: 'Cloud Storage & Sync',
+      icon: Calendar,
+      title: 'Campus-Focused Marketplace',
       description:
-        'All study files—including notes, flashcards, AI summaries, and uploaded slides—are securely stored and synced across devices.'
+        'Users can browse items based on their university campus for easier delivery and pickup.'
     }
   ],
 
   results: [
-    { metric: '1,000+', label: 'Beta Users' },
-    { metric: '120K+', label: 'Focus Minutes Logged' },
-    { metric: '8,000+', label: 'Tasks Created' },
-    { metric: '2,400+', label: 'AI Summaries Generated' }
+    { metric: '3,500+', label: 'Student Users (Across 6 Campuses)' },
+    { metric: '12,000+', label: 'Products Listed' },
+    { metric: '1,800+', label: 'Escrow Transactions Completed' },
+    { metric: '0%', label: 'Reported Scam Incidents After Escrow' }
   ],
 
   screenshots: [
-    '/images/portfolio/focuspal/screenshot-1.png',
-    '/images/portfolio/focuspal/screenshot-2.png',
-    '/images/portfolio/focuspal/screenshot-3.png',
-    '/images/portfolio/focuspal/screenshot-4.png',
-    '/images/portfolio/focuspal/screenshot-5.png',
-    '/images/portfolio/focuspal/screenshot-6.png'
+    '/images/portfolio/sellzan/screenshot-1.png',
+    '/images/portfolio/sellzan/screenshot-2.png',
+    '/images/portfolio/sellzan/screenshot-3.png',
+    '/images/portfolio/sellzan/screenshot-4.png',
+    '/images/portfolio/sellzan/screenshot-5.png',
+    '/images/portfolio/sellzan/screenshot-6.png'
   ],
 
-  liveUrl: 'https://helper.kamartec.online',
-  githubUrl: 'https://github.com/kamartec'
+  liveUrl: 'https://sellzan.com',
+  githubUrl: 'https://github.com/Quirkydude'
 };
 
 const relatedProjects = [
   {
-    title: 'SellZan',
-    description: 'University-Focused Social Commerce App',
-    image: '/images/portfolio/sellzan.png',
-    link: '/portfolio/sellzan'
+    title: 'FocusPal',
+    description: 'AI-Powered Student Study Companion',
+    image: '/images/portfolio/focuspal.png',
+    link: '/portfolio/focuspal'
   },
   {
     title: 'SwapMate',

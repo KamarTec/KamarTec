@@ -54,14 +54,14 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
     { 
       id: 'clement-obeng',
       name: "Clement Obeng", 
-      role: "Lead Web Developer", 
+      role: "Lead Software Developer", 
       image: "/images/team/Clement.jpg",
       bio: "Passionate full-stack developer with 8+ years of experience building scalable web applications. Clement leads our development team with expertise in modern web technologies and architecture design. He has successfully delivered over 50 projects for clients ranging from startups to enterprise corporations.",
       email: "clement@kamartec.com",
       phone: "+233 50 123 4567",
-      skills: ["React", "Node.js", "Python", "AWS", "MongoDB", "Docker", "GraphQL", "TypeScript"],
-      social: { linkedin: "#", github: "#", twitter: "#" },
-      location: "Accra, Ghana",
+      skills: ["React", "Flutter", "Node.js", "Python", "AWS", "MongoDB", "Docker", "PostgreSQL", "GraphQL", "TypeScript"],
+      social: { github: "https://github.com/quirkydude", linkedin: "https://www.linkedin.com/in/clement-obeng-3b724b113/" },
+      location: "Cape Coast, Ghana",
       experience: "8+ years",
       education: "BSc. Computer Science"
     },
@@ -77,7 +77,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
       social: { linkedin: "#", behance: "#", dribbble: "#" },
       location: "Cape Coast, Ghana",
       experience: "6+ years",
-      education: "BA. Graphic Design"
+      education: "BSc. Computer Science"
     },
     { 
       id: 'gerald-boakye',
@@ -91,21 +91,21 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
       social: { linkedin: "#", github: "#" },
       location: "Kumasi, Ghana",
       experience: "4+ years",
-      education: "BSc. Information Technology"
+      education: "BSc. Computer Science"
     },
     { 
       id: 'elvis-bonsu',
       name: "Elvis Osei Bonsu", 
       role: "Web Developer", 
       image: "/images/team/Elvis.jpg",
-      bio: "Backend developer passionate about building robust APIs and database architectures. Elvis ensures our applications are secure, scalable, and performant. He has extensive experience with microservices architecture and cloud infrastructure.",
-      email: "elvis@kamartec.com",
-      phone: "+233 50 456 7890",
-      skills: ["PHP", "Laravel", "MySQL", "Docker", "Redis", "API Development", "REST APIs", "Linux"],
+      bio: "Frontend developer passionate about building user interfaces. Elvis ensures our applications are secure, scalable, and performant. He has a strong background in modern web development practices and cloud infrastructure.",
+      email: "oseie0510@gmail.com",
+      phone: "+233 25 716 3572",
+      skills: ["Html", "CSS", "JavaScript", "React", "TailwindCss"],
       social: { linkedin: "#", github: "#" },
-      location: "Accra, Ghana",
-      experience: "5+ years",
-      education: "BSc. Software Engineering"
+      location: "Techiman, Ghana",
+      experience: "3+ years",
+      education: "BSc. Computer Science"
     },
     { 
       id: 'francis-mensah',
@@ -119,7 +119,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
       social: { linkedin: "#", twitter: "#" },
       location: "Accra, Ghana",
       experience: "4+ years",
-      education: "MSc. Data Science"
+      education: "BSc. Computer Science"
     },
     { 
       id: 'albert-segu',
@@ -133,7 +133,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
       social: { linkedin: "#", twitter: "#" },
       location: "Takoradi, Ghana",
       experience: "3+ years",
-      education: "BSc. Statistics"
+      education: "BSc. Computer Science"
     }
   ];
 
@@ -170,7 +170,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
     {
       title: "Corporate Dashboard",
       description: "Business intelligence dashboard for enterprise clients",
-      image: "/images/projects/dashboard.jpg",
+      image: "/images/portfolio/dashboard.jpg",
       role: member.role.includes('Analyst') ? "Lead Analyst" : "Contributor"
     }
   ];
@@ -242,7 +242,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
                 <Link href="/" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Home</Link>
                 <Link href="/about" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">About</Link>
                 <Link href="/services" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Services</Link>
-                <Link href="/projects" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</Link>
+                <Link href="/portfolio" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Projects</Link>
                 <Link href="/team" className="text-sm lg:text-base text-red-500 font-medium relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-red-500">Team</Link>
                 <Link href="/blog" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Blog</Link>
                 <Link href="/contact" className="text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-purple-600 hover:after:w-full after:transition-all">Contact</Link>
@@ -284,7 +284,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
                 <Link href="/" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Home</Link>
                 <Link href="/about" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">About</Link>
                 <Link href="/services" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Services</Link>
-                <Link href="/projects" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Projects</Link>
+                <Link href="/portfolio" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Projects</Link>
                 <Link href="/team" className="block py-2 text-red-500 font-medium">Team</Link>
                 <Link href="/blog" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Blog</Link>
                 <Link href="/contact" className="block py-2 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400">Contact</Link>
@@ -617,7 +617,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
                   <li><Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Home</Link></li>
                   <li><Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">About</Link></li>
                   <li><Link href="/team" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Team</Link></li>
-                  <li><Link href="/projects" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Projects</Link></li>
+                  <li><Link href="/portfolio" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Projects</Link></li>
                   <li><Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Blog</Link></li>
                 </ul>
               </div>

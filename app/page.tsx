@@ -97,24 +97,24 @@ export default function KamarTecHomePage() {
   ];
 
   const teamMembers = [
-    { id: 1, name: "Clement Obeng", role: "Lead Developer", image: "/images/team/Clement.jpg" },
-    { id: 2, name: "Emmanuel Kofi Frimpong", role: "Lead Designer", image: "/images/team/Emmanuel.jpg" },
-    { id: 3, name: "Gerald Boakye", role: "Front-end Developer", image: "/images/team/Gerald.jpg" },
-    { id: 4, name: "Elvis Osei Bonsu", role: "Developer", image: "/images/team/Elvis.jpg" },
-    { id: 5, name: "Francis Agyei Mensah", role: "Data Analyst", image: "/images/team/Francis.jpg" },
-    { id: 6, name: "Albert Segu", role: "Data Analyst", image: "/images/team/Albert.jpg" }
+    { id: "clement-obeng", name: "Clement Obeng", role: "Lead Developer", image: "/images/team/Clement.jpg" },
+    { id: "emmanuel-frimpong", name: "Emmanuel Kofi Frimpong", role: "Lead Designer", image: "/images/team/Emmanuel.jpg" },
+    { id: "gerald-boakye", name: "Gerald Boakye", role: "Front-end Developer", image: "/images/team/Gerald.jpg" },
+    { id: "elvis-bonsu", name: "Elvis Osei Bonsu", role: "Developer", image: "/images/team/Elvis.jpg" },
+    { id: "francis-mensah", name: "Francis Agyei Mensah", role: "Data Analyst", image: "/images/team/Francis.jpg" },
+    { id: "albert-segu", name: "Albert Segu", role: "Data Analyst", image: "/images/team/Albert.jpg" }
   ];
 
   const services = [
-    { id: 1, title: "Software Dev't", color: "from-purple-600 to-orange-400", image: "/images/services/software_dev.jpg" },
-    { id: 2, title: "Mobile Apps", color: "from-pink-500 to-orange-400", image: "/images/services/mobile_apps.jpg" },
-    { id: 3, title: "Graphic Design", color: "from-pink-600 to-purple-600", image: "/images/services/graphic_design.jpg" },
-    { id: 4, title: "Web Design", color: "from-orange-500 to-red-500", image: "/images/services/web_design.jpg" }
+    { id: "software-development", title: "Software Dev't", color: "from-purple-600 to-orange-400", image: "/images/services/software_dev.jpg" },
+    { id: "mobile-apps", title: "Mobile Apps", color: "from-pink-500 to-orange-400", image: "/images/services/mobile_apps.jpg" },
+    { id: "graphic-design", title: "Graphic Design", color: "from-pink-600 to-purple-600", image: "/images/services/graphic_design.jpg" },
+    { id: "web-design", title: "Web Design", color: "from-orange-500 to-red-500", image: "/images/services/web_design.jpg" }
   ];
 
   const portfolioItems = [
-    { id: 1, title: "FocusPal", description: "Students Partner", image: "/images/portfolio/focuspal.png" },
-    { id: 2, title: "Sellzan", description: "Customers Aid", image: "/images/portfolio/sellzan.png" }
+    { id: "focuspal", title: "FocusPal", description: "Students Partner", image: "/images/portfolio/focuspal.png" },
+    { id: "sellzan", title: "Sellzan", description: "Customers Aid", image: "/images/portfolio/sellzan.png" }
   ];
 
   const searchableItems = [
@@ -159,15 +159,13 @@ export default function KamarTecHomePage() {
     setTimeout(() => setIsSearching(false), 1000);
   };
 
-  const handlePortfolioClick = (id: number) => {
-    // For now, just scroll to portfolio section
-    // Later, you can navigate to detail page: router.push(`/portfolio/${id}`);
+  const handlePortfolioClick = (id: string) => {
+    router.push(`/portfolio/${id}`);
     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleTeamMemberClick = (id: number) => {
-    // For now, just scroll to team section
-    // Later, you can navigate to detail page: router.push(`/team/${id}`);
+  const handleTeamMemberClick = (id: string) => {
+    router.push(`/team/${id}`);
     document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -652,75 +650,6 @@ export default function KamarTecHomePage() {
           </div>
         </section>
 
-        {/* Blog Section */}
-        <section id="blog" className="py-16 sm:py-24 lg:py-32 bg-white dark:bg-gray-900 relative overflow-hidden scroll-animate">
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-pink-100 dark:bg-pink-900 rounded-full filter blur-3xl opacity-40"></div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-            <div className="mb-12 sm:mb-16">
-              <span className="bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 px-4 py-2 rounded-full text-xs sm:text-sm font-medium inline-block mb-4">OUR BLOG</span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-pink-500 mb-4">
-                Latest From The Blog
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-2xl">
-                Not just providing service for humanity and getting something in return. See what the people have to say 
-                about us far from just finding solutions to their needs.
-              </p>
-              <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mt-2">
-                But also equipping individual with the neccessary skills in Tech to impact society.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
-              {/* Blog Card 1 */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src="/images/blog/blog_1.jpg" 
-                    alt="Blog 1" 
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" 
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent"></div>
-                </div>
-                <div className="p-6 sm:p-8">
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-xs sm:text-sm inline-block mb-4">
-                    10th October 2025
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white bg-gradient-to-r from-purple-600 to-pink-500 p-4 sm:p-6 rounded-xl mb-4 hover:shadow-lg transition-shadow">
-                    Meet our new students in Tech
-                  </h3>
-                </div>
-              </div>
-
-              {/* Blog Card 2 */}
-              <div className="bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-500 group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src="/images/blog/blog_2.jpg" 
-                    alt="Blog 2" 
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-500" 
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent"></div>
-                </div>
-                <div className="p-6 sm:p-8">
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-xs sm:text-sm inline-block mb-4">
-                    10th October 2025
-                  </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white bg-gradient-to-r from-purple-600 to-pink-500 p-4 sm:p-6 rounded-xl mb-4 hover:shadow-lg transition-shadow">
-                    Recognised as the best Tech company, 2025
-                  </h3>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center mt-12 sm:mt-16">
-              <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:from-purple-600 hover:to-pink-600 hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
-                READ MORE
-              </button>
-            </div>
-          </div>
-        </section>
 
         {/* CTA Section */}
         <section className="py-24 sm:py-32 lg:py-40 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 dark:from-purple-800 dark:via-purple-900 dark:to-gray-900 relative overflow-hidden scroll-animate">
@@ -791,7 +720,7 @@ export default function KamarTecHomePage() {
                   <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Home</Link>
                   <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">About</Link>
                   <Link href="/services" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Services</Link>
-                  <Link href="/projects" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Projects</Link>
+                  <Link href="/portfolio" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Projects</Link>
                   <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Blogs</Link>
                 </ul>
               </div>

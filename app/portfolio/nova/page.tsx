@@ -69,7 +69,7 @@ export default function FocusPalProjectDetail() {
     'SQLite',
     'Raspberry Pi (Hardware Phase)'
   ],
-  heroImage: '/images/portfolio/nova.png', // can update later
+  heroImage: '/images/portfolio/nova.jpg', 
 
   overview:
     'NOVA is a multilingual African-focused AI assistant designed to understand and communicate in Ghanaian languages such as Twi, Ga, Ewe, Pidgin, and English. It combines speech recognition, natural language understanding, cultural knowledge, and smart home automation to create a localized, private, and relatable AI experience. NOVA runs offline, protects user data, and is being built to power a future hardware home assistant device.',
@@ -127,13 +127,13 @@ export default function FocusPalProjectDetail() {
   ],
 
   screenshots: [
-    '/images/portfolio/nova/screenshot-1.png',
-    '/images/portfolio/nova/screenshot-2.png',
-    '/images/portfolio/nova/screenshot-3.png'
+    '/images/portfolio/unavailable.png',
+    '/images/portfolio/unavailable.png',
+    '/images/portfolio/unavailable.png',
   ],
 
   liveUrl: 'https://kamartec.online/nova',
-  githubUrl: 'https://github.com/kamartec/nova'
+  githubUrl: 'https://github.com/Quirkydude'
 };
 
 const relatedProjects = [
@@ -150,10 +150,10 @@ const relatedProjects = [
     link: '/portfolio/sellzan'
   },
   {
-    title: 'TaskHive',
+    title: 'SwapMate',
     description: 'AI-Powered Personal Organizer',
-    image: '/images/portfolio/taskhive.png',
-    link: '/portfolio/taskhive'
+    image: '/images/portfolio/unavailable.png',
+    link: '/portfolio/swapmate'
   }
 ];
 
