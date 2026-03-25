@@ -343,7 +343,7 @@ export default function KamarTecHomePage() {
                 </h1>
                 
                 <p className="text-white text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed animate-slide-up animation-delay-200">
-                  Our mission is provide the best and quality service to clients to meet their needs. 
+                  Our mission is to provide the best and quality service to clients to meet their needs. 
                   From developing mobile apps to creating and hosting responsive websites for all your business. 
                   Advertising your products and services through catchy designs by our graphic designers to 
                   repairing any faulty computer device.
@@ -419,12 +419,12 @@ export default function KamarTecHomePage() {
                   Creative Design & Development
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mb-4 sm:mb-6 leading-relaxed">
-                  From mobile app to web and graphic design. Our mission is provide the best and quality service to clients to meet their needs. From developing mobile apps to creating and hosting responsive websites for all your business.
+                  From mobile app to web and graphic design. Our mission is to provide the best and quality service to clients to meet their needs. From developing mobile apps to creating and hosting responsive websites for all your business.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed">
                   Advertising your products and services through catchy designs by our graphic designers to repairing any faulty computer device. We equip individuals with the skills in tech to make an impact in society.
                 </p>
-                <Link href="/about" className="bg-purple-600 text-white px-6 sm:px-4 py-3 sm:py-4 rounded-full font-medium hover:bg-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 group text-sm sm:text-base">
+                <Link href="/about" className="bg-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 group text-sm sm:text-base">
   MORE ABOUT US
   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
 </Link>
@@ -535,7 +535,7 @@ export default function KamarTecHomePage() {
             </div>
 
             <div className="text-center mt-12 sm:mt-16">
-              <Link href="/portfolio" className="border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-blue-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
+              <Link href="/portfolio" className="border-2 border-white text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-blue-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 group text-sm sm:text-base">
                 VIEW ALL PORTFOLIO <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -598,7 +598,7 @@ export default function KamarTecHomePage() {
             </div>
 
             <div className="text-center mt-12 sm:mt-16">
-              <Link href="/team" className="bg-yellow-400 text-gray-900 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-yellow-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 mx-auto group text-sm sm:text-base">
+              <Link href="/team" className="bg-yellow-400 text-gray-900 px-8 sm:px-10 py-3 sm:py-4 rounded-full font-medium hover:bg-yellow-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 inline-flex items-center gap-2 group text-sm sm:text-base">
                 VIEW ALL MEMBERS <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -691,8 +691,8 @@ export default function KamarTecHomePage() {
                     />
                   </div>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-                  Making the world a better place through constructing elegant hierarchies. Not just about providing serve to humanity 
-                  but also making impact on the soceity at large.
+                  Making the world a better place through constructing elegant hierarchies. Not just about providing service to humanity 
+                  but also making impact on the society at large.
                 </p>
                 <div className="flex gap-3">
                   <a href="#" className="bg-pink-100 dark:bg-pink-900 p-3 rounded-full hover:bg-pink-200 dark:hover:bg-pink-800 hover:scale-110 transition-all">
@@ -716,12 +716,12 @@ export default function KamarTecHomePage() {
               {/* Company Links */}
               <div>
                 <h3 className="font-bold text-gray-900 dark:text-white mb-6 text-lg">Company</h3>
-                <ul className="space-y-4">
-                  <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Home</Link>
-                  <Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">About</Link>
-                  <Link href="/services" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Services</Link>
-                  <Link href="/portfolio" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Projects</Link>
-                  <Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all text-left">Blogs</Link>
+                <ul className="space-y-4 list-none">
+                  <li><Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Home</Link></li>
+                  <li><Link href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">About</Link></li>
+                  <li><Link href="/services" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Services</Link></li>
+                  <li><Link href="/portfolio" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Projects</Link></li>
+                  <li><Link href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Blogs</Link></li>
                 </ul>
               </div>
 
@@ -761,6 +761,19 @@ export default function KamarTecHomePage() {
             </div>
           </div>
         </footer>
+
+        {/* Back to Top Button */}
+        {scrollY > 400 && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-6 right-6 z-50 bg-purple-600 text-white p-3 rounded-full shadow-2xl hover:bg-purple-700 hover:scale-110 transition-all duration-300"
+            aria-label="Back to top"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 15l-6-6-6 6"/>
+            </svg>
+          </button>
+        )}
 
         <style jsx>{`
           @keyframes blob {
