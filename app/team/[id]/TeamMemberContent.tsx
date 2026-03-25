@@ -588,7 +588,7 @@ export default function TeamMemberContent({ memberId }: { memberId: string }) {
                   />
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-                  Making the world a better place through constructing elegant hierarchies. Not just about providing serve to humanity 
+                  Making the world a better place through constructing elegant hierarchies. Not just about providing service to humanity 
                   but also making impact on the society at large.
                 </p>
                 <div className="flex gap-3">

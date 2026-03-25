@@ -579,8 +579,8 @@ const relatedProjects = [
                   />
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-                  Making the world a better place through constructing elegant hierarchies. Not just about providing serve to humanity 
-                  but also making impact on the soceity at large.
+                  Making the world a better place through constructing elegant hierarchies. Not just about providing service to humanity 
+                  but also making impact on the society at large.
                 </p>
                 <div className="flex gap-3">
                   <a href="#" className="bg-pink-100 dark:bg-pink-900 p-3 rounded-full hover:bg-pink-200 dark:hover:bg-pink-800 hover:scale-110 transition-all">

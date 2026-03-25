@@ -71,8 +71,7 @@ export default function KamarTecContactPage() {
     setFormStatus({ type: '', message: '' });
 
     try {
-      // Send to your VPS backend endpoint
-      const response = await fetch('https://kamartec.org/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +93,8 @@ export default function KamarTecContactPage() {
           message: ''
         });
       } else {
-        throw new Error('Failed to send message');
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to send message');
       }
     } catch (error) {
       setFormStatus({
@@ -487,8 +487,8 @@ export default function KamarTecContactPage() {
                   />
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-                  Making the world a better place through constructing elegant hierarchies. Not just about providing serve to humanity 
-                  but also making impact on the soceity at large.
+                  Making the world a better place through constructing elegant hierarchies. Not just about providing service to humanity 
+                  but also making impact on the society at large.
                 </p>
                 <div className="flex gap-3">
                   <a href="#" className="bg-pink-100 dark:bg-pink-900 p-3 rounded-full hover:bg-pink-200 dark:hover:bg-pink-800 hover:scale-110 transition-all">
@@ -516,7 +516,7 @@ export default function KamarTecContactPage() {
                   <li><a href="/" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Home</a></li>
                   <li><a href="/about" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">About</a></li>
                   <li><a href="/services" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Services</a></li>
-                  <li><a href="/projects" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Projects</a></li>
+                  <li><a href="/portfolio" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Portfolio</a></li>
                   <li><a href="/blog" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 hover:translate-x-1 inline-block transition-all">Blogs</a></li>
                 </ul>
               </div>
