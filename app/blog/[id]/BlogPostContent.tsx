@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Calendar, Clock, User, Tag, Share2, ArrowLeft, Mail, ChevronRight, BookOpen, Printer } from 'lucide-react';
+import NewsletterForm from '../../components/NewsletterForm';
 
 export default function BlogPostContent({ postId }: { postId: string }) {
   const [scrollY, setScrollY] = useState(0);
@@ -771,6 +772,772 @@ export default function BlogPostContent({ postId }: { postId: string }) {
       tags: ["Mobile", "Flutter", "React Native", "5G", "AI", "Trends"],
       image: "/images/blog/mobile-trends.jpg",
       featured: true
+    },
+    {
+      id: 'importance-of-responsive-design',
+      title: "Why Responsive Design is Non-Negotiable in 2025",
+      excerpt: "Understanding the critical importance of responsive design in today's multi-device world.",
+      content: `
+        <h2>The Multi-Device Reality</h2>
+        <p>In 2025, people access the web on phones, tablets, laptops, smart TVs, and even refrigerators. Over 60% of all web traffic now comes from mobile devices. If your website looks broken on a phone, you've already lost more than half your visitors — and most won't come back.</p>
+        <p>Responsive design is no longer a "nice to have." It's a business survival requirement.</p>
+
+        <h2>What Responsive Design Actually Means</h2>
+        <p>Responsive design means building a single website that adapts fluidly to any screen size. This is achieved through:</p>
+        <ul>
+          <li><strong>Fluid grids:</strong> Layouts that use percentages instead of fixed pixels</li>
+          <li><strong>Flexible images:</strong> Images that scale within their containers</li>
+          <li><strong>CSS media queries:</strong> Different styles applied at different breakpoints</li>
+          <li><strong>Mobile-first approach:</strong> Design the small screen first, then enhance for larger screens</li>
+        </ul>
+
+        <h2>The Cost of Getting It Wrong</h2>
+        <p>A non-responsive website doesn't just look bad — it costs money:</p>
+        <ul>
+          <li>Google penalises non-mobile-friendly sites in search rankings</li>
+          <li>Bounce rates increase by up to 50% on mobile-unfriendly pages</li>
+          <li>Conversion rates on mobile can drop to near zero with poor layouts</li>
+          <li>Brand perception suffers — a broken site signals an unprofessional business</li>
+        </ul>
+
+        <blockquote>
+          A website that works on desktop but breaks on mobile is not a website — it's an obstacle.
+        </blockquote>
+
+        <h2>Responsive vs. Adaptive vs. Mobile App</h2>
+        <p>It's worth clarifying the options:</p>
+        <ul>
+          <li><strong>Responsive design:</strong> One codebase, fluid layout — the gold standard for most sites</li>
+          <li><strong>Adaptive design:</strong> Multiple fixed layouts served based on detected device — more control, more maintenance</li>
+          <li><strong>Separate mobile site (m.site.com):</strong> Old approach, now largely abandoned due to SEO fragmentation</li>
+          <li><strong>Mobile app:</strong> Best for deeply interactive, offline-capable experiences</li>
+        </ul>
+
+        <h2>Testing Responsiveness Properly</h2>
+        <p>Chrome DevTools is a starting point, not the finish line. Real device testing matters because:</p>
+        <ul>
+          <li>Touch targets must be at least 44×44px to be reliably tappable</li>
+          <li>Viewport behaviour varies between iOS Safari and Android Chrome</li>
+          <li>Font rendering differs across operating systems</li>
+          <li>Hover states are invisible on touch screens — don't rely on them for critical UI</li>
+        </ul>
+
+        <h2>Common Responsive Design Mistakes</h2>
+        <ol>
+          <li><strong>Fixed-width elements:</strong> Never use <code>width: 400px</code> on anything that needs to fit a phone</li>
+          <li><strong>Tiny tap targets:</strong> Buttons smaller than your finger tip cause rage-taps and abandonment</li>
+          <li><strong>Horizontal scrolling:</strong> Content that overflows sideways is an immediate red flag</li>
+          <li><strong>Desktop-only navigation:</strong> Full nav bars with 10 items don't work on 375px screens</li>
+          <li><strong>Unscaled images:</strong> A 2000px hero image on a 390px phone wastes bandwidth and slows load</li>
+        </ol>
+
+        <h2>How KamarTec Approaches Responsive Design</h2>
+        <p>Every website we build at KamarTec starts from the smallest breakpoint and scales up. We use Tailwind CSS's responsive utilities to build layouts that feel native on every device. Our standard breakpoints:</p>
+        <div class="code-block">
+          // Tailwind CSS responsive prefixes
+          sm:  640px+   (larger phones, small tablets)
+          md:  768px+   (tablets)
+          lg:  1024px+  (laptops)
+          xl:  1280px+  (desktops)
+          2xl: 1536px+  (large screens)
+        </div>
+
+        <div class="key-takeaways">
+          <p><strong>The rule:</strong> Every pixel we ship is tested on a real 375px viewport before we call it done. If it doesn't work at 375px, it doesn't ship.</p>
+        </div>
+      `,
+      author: "Emmanuel Kofi Frimpong",
+      authorRole: "Lead Designer",
+      authorImage: "/images/team/Emmanuel.jpg",
+      date: "2024-12-15",
+      readTime: "5 min read",
+      category: "Design",
+      tags: ["Responsive", "Mobile-First", "Web Design", "CSS"],
+      image: "/images/blog/design-principles.jpg",
+      featured: false
+    },
+    {
+      id: 'cybersecurity-best-practices',
+      title: "Cybersecurity Best Practices for Small Businesses",
+      excerpt: "Protect your business from cyber threats with these essential security measures.",
+      content: `
+        <h2>Why Small Businesses Are Prime Targets</h2>
+        <p>Hackers love small businesses. Not because they have the most money — but because they have the least protection. Over 43% of cyberattacks target small businesses, and 60% of those hit businesses close within six months of an attack. The assumption that "we're too small to be a target" is exactly what makes small businesses vulnerable.</p>
+
+        <h2>The Most Common Threats</h2>
+        <ul>
+          <li><strong>Phishing:</strong> Fake emails designed to steal credentials or install malware. Responsible for over 80% of data breaches.</li>
+          <li><strong>Ransomware:</strong> Malware that encrypts your files and demands payment to restore them.</li>
+          <li><strong>Weak passwords:</strong> "password123" is still one of the most used passwords globally in 2025.</li>
+          <li><strong>Unpatched software:</strong> Outdated systems have known vulnerabilities that hackers exploit automatically.</li>
+          <li><strong>Insider threats:</strong> Current or former employees with access they shouldn't have.</li>
+        </ul>
+
+        <h2>Password Security</h2>
+        <p>Passwords are your first line of defence. Here's the modern approach:</p>
+        <ol>
+          <li>Use a password manager (Bitwarden, 1Password, Dashlane) — stop memorizing, start generating</li>
+          <li>Enable two-factor authentication (2FA) on every account that supports it</li>
+          <li>Use passkeys where available — they're phishing-proof by design</li>
+          <li>Never reuse passwords across different services</li>
+          <li>Minimum 16-character passwords for business accounts</li>
+        </ol>
+
+        <blockquote>
+          The average data breach costs $4.45 million globally. For a small business, that's not a setback — it's a closure notice.
+        </blockquote>
+
+        <h2>Email Security</h2>
+        <p>Email is the #1 attack vector. Train yourself and your team to:</p>
+        <ul>
+          <li>Verify sender addresses carefully — hackers use lookalike domains (e.g., <code>karnartec.com</code> instead of <code>kamartec.com</code>)</li>
+          <li>Never click links in unexpected emails — go to the website directly</li>
+          <li>Be suspicious of urgency ("Act NOW or your account is suspended")</li>
+          <li>Enable SPF, DKIM, and DMARC records on your domain to prevent email spoofing</li>
+        </ul>
+
+        <h2>Backups: Your Insurance Policy</h2>
+        <p>The 3-2-1 backup rule is non-negotiable:</p>
+        <ul>
+          <li><strong>3</strong> copies of your data</li>
+          <li><strong>2</strong> different storage media types</li>
+          <li><strong>1</strong> offsite copy (cloud backup)</li>
+        </ul>
+        <p>Test your backups regularly — a backup you've never restored is a backup you don't actually have.</p>
+
+        <h2>Software and System Updates</h2>
+        <p>Enable automatic updates everywhere. When a vendor releases a security patch, attackers immediately start scanning the internet for unpatched systems. The window between patch release and exploitation can be as short as 24 hours.</p>
+
+        <h2>Wi-Fi Security</h2>
+        <ul>
+          <li>Use WPA3 encryption on business Wi-Fi</li>
+          <li>Create a separate guest network for visitors</li>
+          <li>Never conduct sensitive business on public Wi-Fi without a VPN</li>
+          <li>Change the default router admin password</li>
+        </ul>
+
+        <h2>Incident Response Plan</h2>
+        <p>Hope for the best, plan for the worst. Your plan should cover:</p>
+        <ol>
+          <li>Who to call (IT support, legal, your bank)</li>
+          <li>How to isolate affected systems</li>
+          <li>How to notify affected customers if data was exposed</li>
+          <li>How to restore from backups</li>
+          <li>How to document the incident for insurance/legal purposes</li>
+        </ol>
+
+        <div class="key-takeaways">
+          <p><strong>Start today:</strong> Enable 2FA on your email. Get a password manager. Schedule automatic backups. These three steps alone will protect you against the majority of attacks targeting small businesses.</p>
+        </div>
+      `,
+      author: "Clement Obeng",
+      authorRole: "Lead Developer",
+      authorImage: "/images/team/Clement.jpg",
+      date: "2024-12-10",
+      readTime: "8 min read",
+      category: "Security",
+      tags: ["Cybersecurity", "Security", "Best Practices", "Small Business"],
+      image: "/images/blog/web-dev-future.jpg",
+      featured: false
+    },
+    {
+      id: 'power-of-data-visualization',
+      title: "The Power of Data Visualization: Turning Numbers into Stories",
+      excerpt: "Learn how effective data visualization can communicate complex information clearly.",
+      content: `
+        <h2>Why Visualization Matters</h2>
+        <p>The human brain processes images 60,000 times faster than text. A spreadsheet with 10,000 rows of sales data tells you nothing at a glance. A single bar chart can tell you your best month, worst month, and the trend in three seconds. That's the power of data visualization.</p>
+        <p>Good visualization doesn't just make data look pretty — it makes data understandable, actionable, and compelling to stakeholders who aren't data experts.</p>
+
+        <h2>Core Principles of Effective Data Visualization</h2>
+        <ol>
+          <li><strong>Clarity over complexity:</strong> The best chart is the simplest one that answers the question</li>
+          <li><strong>Context matters:</strong> Always include axis labels, units, and a clear title</li>
+          <li><strong>Honest scales:</strong> Never truncate a Y-axis to exaggerate differences</li>
+          <li><strong>Appropriate chart type:</strong> Match the visualization to the data and the question</li>
+          <li><strong>Consistent color:</strong> Use color to encode meaning, not just decoration</li>
+        </ol>
+
+        <h2>Choosing the Right Chart Type</h2>
+        <table>
+          <thead><tr><th>Question Type</th><th>Best Chart</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td>How does X change over time?</td><td>Line chart</td><td>Monthly revenue trend</td></tr>
+            <tr><td>How do categories compare?</td><td>Bar chart</td><td>Sales by product category</td></tr>
+            <tr><td>What's the part-to-whole?</td><td>Pie / Donut chart</td><td>Market share breakdown</td></tr>
+            <tr><td>Is there a correlation?</td><td>Scatter plot</td><td>Ad spend vs. conversions</td></tr>
+            <tr><td>Where is something located?</td><td>Map</td><td>Customer distribution by region</td></tr>
+            <tr><td>How is data distributed?</td><td>Histogram / Box plot</td><td>Customer age distribution</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Tools of the Trade</h2>
+        <ul>
+          <li><strong>Power BI:</strong> Best for Microsoft-ecosystem businesses, strong DAX capabilities</li>
+          <li><strong>Tableau:</strong> Industry-leading drag-and-drop visualizations, excellent for storytelling</li>
+          <li><strong>Google Looker Studio:</strong> Free, connects to Google products seamlessly</li>
+          <li><strong>Python (matplotlib/seaborn/plotly):</strong> Full control for data scientists</li>
+          <li><strong>D3.js:</strong> Custom interactive web visualizations for developers</li>
+          <li><strong>Excel/Google Sheets:</strong> Good enough for simple reports</li>
+        </ul>
+
+        <blockquote>
+          Data visualization is the last mile between analysis and action. Without it, even the best analysis goes unread and unused.
+        </blockquote>
+
+        <h2>Common Visualization Mistakes</h2>
+        <ul>
+          <li><strong>3D charts:</strong> They look impressive and communicate poorly — avoid them</li>
+          <li><strong>Too many colors:</strong> Limit to 5-7 distinct colors; beyond that, the eye can't distinguish</li>
+          <li><strong>Missing context:</strong> "Sales increased 40%" — compared to what? Last week? Last year? A target?</li>
+          <li><strong>Chart junk:</strong> Gridlines, shadows, and decorations that don't add information</li>
+          <li><strong>Wrong chart for the data:</strong> Using a pie chart with 12 slices is worse than a table</li>
+        </ul>
+
+        <h2>Building a Data Story</h2>
+        <p>The most effective dashboards follow a narrative structure:</p>
+        <ol>
+          <li><strong>Context:</strong> What is the current state? (Summary KPIs)</li>
+          <li><strong>Comparison:</strong> How does that compare to before? (Trend lines)</li>
+          <li><strong>Breakdown:</strong> What's driving the result? (Dimension analysis)</li>
+          <li><strong>Action:</strong> What should we do? (Highlighted anomalies, recommendations)</li>
+        </ol>
+
+        <h2>Accessibility in Data Visualization</h2>
+        <p>Around 8% of men and 0.5% of women have some form of colour blindness. Design your charts to be readable without relying solely on color — use patterns, labels, and shapes as secondary encoding.</p>
+
+        <div class="key-takeaways">
+          <p><strong>1. Start with a question,</strong> not a chart type.</p>
+          <p><strong>2. Less is more</strong> — remove every element that doesn't add meaning.</p>
+          <p><strong>3. Always include context</strong> so readers can interpret what they're seeing.</p>
+          <p><strong>4. Test with a non-expert</strong> — if they can't understand it in 10 seconds, simplify.</p>
+        </div>
+      `,
+      author: "Albert Kofi Segu",
+      authorRole: "Data Scientist",
+      authorImage: "/images/team/Albert.jpg",
+      date: "2024-12-05",
+      readTime: "6 min read",
+      category: "Data Analytics",
+      tags: ["Visualization", "Data", "Analytics", "Tableau", "Power BI"],
+      image: "/images/blog/data-analytics.jpg",
+      featured: false
+    },
+    {
+      id: 'building-ghanas-digital-future-2026',
+      title: "Building Ghana's Digital Future: KamarTec's Vision for 2026",
+      excerpt: "How a team of young Ghanaian technologists are building world-class digital products from Cape Coast to the world.",
+      content: `
+        <h2>Where We Started</h2>
+        <p>KamarTec Solutions was born at the University of Cape Coast with a simple but powerful belief: Africa deserves world-class technology built by Africans who understand the continent. Not technology exported from Silicon Valley and poorly adapted, but products designed from the ground up for African contexts — African languages, African payment systems, African infrastructure realities.</p>
+        <p>We started with a handful of students, a laptop, and a lot of ambition. Today, we're a nine-person team that has shipped over 50 projects, served clients from Cape Coast to the UK, and built tools used by thousands of people across Ghana.</p>
+
+        <h2>What 2025 Taught Us</h2>
+        <p>2025 was our biggest year yet — and our most educational. We shipped NOVA, our culturally-aware AI assistant; launched KamarPay, our own payment infrastructure; and expanded our client base internationally with projects like EarlLaw Firm in the UK and Horizon Path Travels.</p>
+        <p>But we also learned hard lessons:</p>
+        <ul>
+          <li>Shipping fast without proper testing creates expensive rework</li>
+          <li>Client communication is as important as technical execution</li>
+          <li>Building for Ghanaian infrastructure (spotty internet, diverse devices, MoMo-first payments) requires different design decisions than building for Western markets</li>
+        </ul>
+
+        <h2>Our Vision for 2026</h2>
+        <p>In 2026, we're doubling down on three pillars:</p>
+
+        <h2>1. Deeper African Roots</h2>
+        <p>We will continue building products that solve distinctly African problems. MaHyp tackles hypertension monitoring in a country where many patients can't easily see a doctor. DataConnect addresses affordable internet access. KamarPay works within the MoMo ecosystem that millions of Ghanaians already trust. We're not transplanting foreign solutions — we're building African ones.</p>
+
+        <h2>2. World-Class Quality</h2>
+        <p>Being African doesn't mean accepting lower standards. Our goal is for every project KamarTec ships to be indistinguishable in quality from anything produced by a London or San Francisco agency. We're investing in design systems, automated testing, CI/CD pipelines, and code review processes to make this a reality.</p>
+
+        <h2>3. Training the Next Generation</h2>
+        <p>Ghana's tech talent pool is exploding. We're committed to contributing to it through mentorship, internships, and eventually a formal KamarTec Academy programme. The next team of builders that disrupts African tech should have passed through our doors.</p>
+
+        <h2>Legally Registered and Growing</h2>
+        <p>KamarTec is a legally registered business in Ghana. This milestone matters — it means our clients can trust us with enterprise contracts, our team can work with full legal protections, and we can pursue government and NGO partnerships that require registered entities.</p>
+
+        <blockquote>
+          Africa's digital future won't be built by outsiders. It will be built by people like us — young, hungry, and deeply rooted in the continent we love.
+        </blockquote>
+
+        <div class="key-takeaways">
+          <p><strong>If you're a Ghanaian business</strong> looking for a tech partner that understands your context — we're ready. Let's build something great together.</p>
+        </div>
+      `,
+      author: "Clement Obeng",
+      authorRole: "Lead Full-Stack Developer",
+      authorImage: "/images/team/Clement.jpg",
+      date: "2026-01-10",
+      readTime: "7 min read",
+      category: "Company",
+      tags: ["Ghana", "Tech", "Africa", "KamarTec", "Vision"],
+      image: "/images/blog/web-dev-future.jpg",
+      featured: true
+    },
+    {
+      id: 'how-we-built-nova-african-ai',
+      title: "How We Built NOVA — Africa's First Culturally-Aware AI Assistant",
+      excerpt: "The story behind building an AI that understands African languages, culture, and context from the ground up.",
+      content: `
+        <h2>The Problem with Existing AI Assistants</h2>
+        <p>Ask any popular AI assistant a question about Ghanaian culture, Twi language, or local food, and you'll quickly notice the gap. These systems were trained primarily on English-language Western content. They hallucinate African geography. They misunderstand idioms. They give generic answers where local knowledge is what's actually needed.</p>
+        <p>We built NOVA to fix that.</p>
+
+        <h2>What Makes NOVA Different</h2>
+        <p>NOVA is not a ChatGPT wrapper with an African name slapped on it. It was built with deliberate architectural decisions to handle African contexts:</p>
+        <ul>
+          <li><strong>Multilingual from day one:</strong> NOVA supports Twi, Ewe, Ga, and English — not as translation layers but as native understanding</li>
+          <li><strong>Cultural knowledge base:</strong> We built and curated a dataset of Ghanaian and broader African cultural content, proverbs, history, and context</li>
+          <li><strong>Local business integration:</strong> NOVA can answer questions about Ghanaian services, institutions, and geography accurately</li>
+          <li><strong>Mobile-first architecture:</strong> Designed for phones on 3G, not high-bandwidth desktop browsers</li>
+        </ul>
+
+        <h2>The Technical Stack</h2>
+        <p>Building an AI product from Africa presented infrastructure challenges most AI tutorials don't cover:</p>
+        <div class="code-block">
+          Backend:  Python + FastAPI
+          ML:       Fine-tuned transformer models + RAG pipeline
+          Frontend: Flutter (iOS + Android)
+          Hosting:  AWS (with regional fallbacks for latency)
+          Database: PostgreSQL + vector store for embeddings
+          CDN:      Cloudflare (critical for African connectivity)
+        </div>
+
+        <h2>The Hardest Part: Data</h2>
+        <p>Good AI requires good training data. For African languages and contexts, that data barely exists in public datasets. We spent months:</p>
+        <ul>
+          <li>Transcribing and translating content from Ghanaian media</li>
+          <li>Partnering with linguistics students at UCC to annotate cultural content</li>
+          <li>Building scraping pipelines for publicly available Ghanaian news and educational content</li>
+          <li>Manually reviewing thousands of examples to ensure quality</li>
+        </ul>
+
+        <blockquote>
+          Building AI for Africa isn't a research problem — it's a data collection problem. The knowledge exists in the minds of millions of people. Our job is to capture it responsibly.
+        </blockquote>
+
+        <h2>What We Got Wrong (and Fixed)</h2>
+        <p>Our first version of NOVA was confident but wrong — it would give authoritative-sounding answers about local topics that were subtly incorrect. We fixed this through:</p>
+        <ol>
+          <li>Retrieval-Augmented Generation (RAG) — grounding responses in verified source documents rather than pure model generation</li>
+          <li>Confidence thresholds — NOVA now says "I'm not sure" rather than hallucinating</li>
+          <li>Human feedback loops — real Ghanaian users flagged bad responses that we used to improve the model</li>
+        </ol>
+
+        <h2>What's Next for NOVA</h2>
+        <p>NOVA is still growing. Our roadmap includes:</p>
+        <ul>
+          <li>Voice input/output in Twi and other Ghanaian languages</li>
+          <li>Integration with Ghanaian government services and databases</li>
+          <li>Expansion to other West African languages (Hausa, Yoruba, Igbo)</li>
+          <li>A developer API so other apps can build on top of NOVA</li>
+        </ul>
+
+        <div class="key-takeaways">
+          <p>NOVA is proof that world-class AI can be built from Africa, for Africa. We're just getting started.</p>
+        </div>
+      `,
+      author: "Kanbros Kojo Antwi",
+      authorRole: "Cybersecurity & AI Engineer",
+      authorImage: "/images/team/Kanbros.jpg",
+      date: "2025-11-20",
+      readTime: "9 min read",
+      category: "AI & Machine Learning",
+      tags: ["AI", "NOVA", "Africa", "NLP", "Machine Learning", "Ghana"],
+      image: "/images/blog/web-dev-future.jpg",
+      featured: true
+    },
+    {
+      id: 'cybersecurity-tips-ghanaian-businesses',
+      title: "Cybersecurity Tips Every Ghanaian Business Should Know in 2026",
+      excerpt: "Practical, affordable cybersecurity measures that any small or medium Ghanaian business can implement today.",
+      content: `
+        <h2>The Ghanaian Cyber Threat Landscape</h2>
+        <p>Ghana's digital economy grew by over 30% in the last three years. Mobile money transactions now exceed GHS 1 trillion annually. E-commerce, digital banking, and online government services are mainstream. This growth is a tremendous opportunity — and it has attracted the attention of cybercriminals from around the world.</p>
+        <p>The most common attacks targeting Ghanaian businesses and individuals include:</p>
+        <ul>
+          <li><strong>MoMo fraud:</strong> Fake "verification" calls and SMS to steal PINs</li>
+          <li><strong>Business email compromise (BEC):</strong> Hackers impersonating management or suppliers to redirect payments</li>
+          <li><strong>Ransomware:</strong> Encrypting business data and demanding payment in cryptocurrency</li>
+          <li><strong>Phishing websites:</strong> Fake copies of bank or MoMo sites harvesting login credentials</li>
+          <li><strong>Social engineering:</strong> Manipulating employees into revealing access credentials</li>
+        </ul>
+
+        <h2>Protecting Your Mobile Money</h2>
+        <p>MoMo is Ghana's financial backbone — which makes it a prime target:</p>
+        <ol>
+          <li><strong>Never share your PIN</strong> — no legitimate MoMo agent or MTN/Vodafone representative will ever ask for it</li>
+          <li>Enable <strong>SIM lock</strong> on your phone to prevent SIM-swap attacks</li>
+          <li>Register a <strong>dedicated MoMo SIM</strong> you never use for normal calls, making it harder to social-engineer</li>
+          <li>Review your <strong>transaction alerts</strong> daily — catch fraud early</li>
+          <li>Set <strong>daily transfer limits</strong> on large accounts</li>
+        </ol>
+
+        <blockquote>
+          In 2025, Ghana lost over GHS 500 million to mobile money fraud. Most of those losses were preventable with basic awareness training.
+        </blockquote>
+
+        <h2>Securing Your Business Email</h2>
+        <p>Business Email Compromise (BEC) is the most financially damaging cyber threat to Ghanaian SMEs:</p>
+        <ul>
+          <li>Enable <strong>2-factor authentication</strong> on all business email accounts</li>
+          <li>Verify payment instruction changes via a <strong>phone call</strong> to a known number — never just by email</li>
+          <li>Set up <strong>DMARC records</strong> on your domain to prevent attackers from spoofing your email address</li>
+          <li>Train staff to <strong>check sender addresses carefully</strong> — not just the display name</li>
+        </ul>
+
+        <h2>Affordable Security Tools</h2>
+        <p>You don't need an enterprise budget to be secure. These tools are free or low-cost:</p>
+        <table>
+          <thead><tr><th>Need</th><th>Free Tool</th><th>Paid Alternative</th></tr></thead>
+          <tbody>
+            <tr><td>Password management</td><td>Bitwarden</td><td>1Password</td></tr>
+            <tr><td>2-Factor Authentication</td><td>Google Authenticator</td><td>Duo Security</td></tr>
+            <tr><td>Antivirus</td><td>Windows Defender</td><td>Malwarebytes</td></tr>
+            <tr><td>VPN</td><td>Proton VPN (free tier)</td><td>NordVPN</td></tr>
+            <tr><td>Cloud backup</td><td>Google Drive</td><td>Backblaze</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Employee Awareness Training</h2>
+        <p>Your biggest vulnerability is human. A single employee clicking one phishing link can compromise your entire business. Invest in:</p>
+        <ul>
+          <li>Monthly phishing simulation drills</li>
+          <li>Clear reporting procedures for suspicious activity</li>
+          <li>A culture where employees feel safe reporting mistakes</li>
+          <li>Regular updates on new scam tactics making the rounds in Ghana</li>
+        </ul>
+
+        <h2>Incident Response: What to Do When You're Attacked</h2>
+        <ol>
+          <li>Immediately disconnect affected devices from the network</li>
+          <li>Change all passwords from a clean, unaffected device</li>
+          <li>Contact your bank and MoMo provider immediately if financial data was compromised</li>
+          <li>Report to Ghana's Cybersecurity Authority (CSA): <strong>cybersecurity.gov.gh</strong></li>
+          <li>Document everything for insurance and legal purposes</li>
+        </ol>
+
+        <div class="key-takeaways">
+          <p><strong>KamarTec offers cybersecurity audits</strong> for Ghanaian businesses. Contact us to find out where your vulnerabilities are before attackers do.</p>
+        </div>
+      `,
+      author: "Kanbros Kojo Antwi",
+      authorRole: "Cybersecurity & AI Engineer",
+      authorImage: "/images/team/Kanbros.jpg",
+      date: "2025-10-05",
+      readTime: "8 min read",
+      category: "Security",
+      tags: ["Cybersecurity", "Ghana", "Small Business", "Security", "MoMo"],
+      image: "/images/blog/web-dev-future.jpg",
+      featured: false
+    },
+    {
+      id: 'from-idea-to-app-mahyp-story',
+      title: "From Idea to App: The MaHyp Development Story",
+      excerpt: "How KamarTec built a hypertension monitoring app — the challenges, lessons, and wins.",
+      content: `
+        <h2>The Problem We Were Solving</h2>
+        <p>Hypertension — high blood pressure — is a silent killer. It affects an estimated 1 in 4 Ghanaian adults, yet most are undiagnosed and untreated. Even those who are diagnosed often lack consistent access to healthcare for monitoring. Medication is taken irregularly. Blood pressure goes unchecked for months. Strokes and heart attacks follow.</p>
+        <p>MaHyp was built to change that. The premise: what if every hypertension patient in Ghana had a digital health companion that helped them track readings, stick to medication, and communicate their health data to their doctor — all on a smartphone they already own?</p>
+
+        <h2>Understanding the Users First</h2>
+        <p>Before writing a single line of code, our team spent three weeks conducting user research:</p>
+        <ul>
+          <li>Interviewed 12 hypertension patients aged 40-70 in Cape Coast</li>
+          <li>Spoke with 4 doctors at regional health centres about their patient monitoring challenges</li>
+          <li>Observed how patients currently tracked (or didn't track) their readings — mostly on paper scraps or not at all</li>
+        </ul>
+        <p>The insights changed our design dramatically. Most of our target users had basic Android phones. They weren't comfortable with complex apps. They trusted their doctors completely. And their main challenge wasn't awareness — it was consistency and memory.</p>
+
+        <h2>Technical Challenges Unique to Ghana</h2>
+        <p>Building for a Ghanaian health context meant solving problems that don't come up in Silicon Valley:</p>
+        <ul>
+          <li><strong>Offline-first:</strong> Many users are in areas with unreliable internet. MaHyp stores all data locally and syncs when connected.</li>
+          <li><strong>Low-bandwidth data sharing:</strong> Sharing health reports with doctors needed to work on 2G connections.</li>
+          <li><strong>Language accessibility:</strong> We built Twi voice guidance for users uncomfortable reading English instructions.</li>
+          <li><strong>Blood pressure monitor compatibility:</strong> We needed to work with the cheapest Bluetooth BP monitors available locally, not just premium brands.</li>
+        </ul>
+
+        <div class="code-block">
+          Tech Stack:
+          - Frontend: React Native (cross-platform iOS + Android)
+          - Backend:   Node.js + Express
+          - Database:  SQLite (local) + PostgreSQL (cloud sync)
+          - Auth:      Phone number OTP (no email required)
+          - Comms:     SMS alerts via Hubtel (Ghana's SMS gateway)
+        </div>
+
+        <blockquote>
+          The best health app isn't the one with the most features. It's the one a 65-year-old in a rural town actually uses every day.
+        </blockquote>
+
+        <h2>What We Got Wrong (And Fixed)</h2>
+        <p>Our first beta had a medication reminder system with hourly notifications. Users turned off notifications entirely after day two. We learned:</p>
+        <ul>
+          <li>Fewer, well-timed reminders beat frequent generic ones</li>
+          <li>Contextual nudges ("You haven't logged your morning reading yet") outperform scheduled alerts</li>
+          <li>Family member notifications ("Your mom hasn't taken her medication") dramatically improved adherence</li>
+        </ul>
+
+        <h2>Impact So Far</h2>
+        <p>MaHyp's early results have been encouraging:</p>
+        <table>
+          <thead><tr><th>Metric</th><th>Before MaHyp</th><th>After 3 Months</th></tr></thead>
+          <tbody>
+            <tr><td>Medication adherence</td><td>42%</td><td>78%</td></tr>
+            <tr><td>Blood pressure logging frequency</td><td>1×/week</td><td>5×/week</td></tr>
+            <tr><td>Doctor visits missed</td><td>38%</td><td>12%</td></tr>
+          </tbody>
+        </table>
+
+        <h2>What's Next</h2>
+        <p>We're working on MaHyp 2.0 with:</p>
+        <ul>
+          <li>Direct integration with NHIS (National Health Insurance Scheme) patient records</li>
+          <li>Teleconsultation with partnered doctors</li>
+          <li>Expansion to diabetes and asthma monitoring</li>
+          <li>A community feature connecting patients with peers for support</li>
+        </ul>
+
+        <div class="key-takeaways">
+          <p>MaHyp taught us that the most impactful tech isn't the most sophisticated — it's the most human. Build for real people in real contexts, and the results speak for themselves.</p>
+        </div>
+      `,
+      author: "Derry Atta Bandoh",
+      authorRole: "Backend Developer",
+      authorImage: "/images/team/Derry.jpg",
+      date: "2025-09-15",
+      readTime: "10 min read",
+      category: "Mobile Development",
+      tags: ["MaHyp", "Health Tech", "Flutter", "Ghana", "Hypertension"],
+      image: "/images/blog/mobile-trends.jpg",
+      featured: false
+    },
+    {
+      id: 'kamarpay-building-payment-infrastructure',
+      title: "KamarPay: Why We Built Our Own Payment Platform",
+      excerpt: "The story of how and why KamarTec built its own payment infrastructure for the Ghanaian market.",
+      content: `
+        <h2>The Payment Problem in Ghana</h2>
+        <p>If you've ever tried to integrate payments into a Ghanaian web app, you know the pain. Stripe doesn't support Ghana natively. International gateways have high foreign exchange fees. Local options are fragmented, undocumented, and unreliable. The result: most Ghanaian digital products bolt on a manual mobile money collection process, creating friction that kills conversion rates.</p>
+        <p>We experienced this firsthand building SellZan, our e-commerce platform. Customers wanted to pay via MoMo. Our gateway was slow, charged high fees, and failed silently 15% of the time. So we decided to build the payment layer ourselves.</p>
+
+        <h2>What KamarPay Does</h2>
+        <p>KamarPay is a payment infrastructure layer specifically designed for Ghanaian businesses:</p>
+        <ul>
+          <li><strong>MoMo collection:</strong> Accept payments from MTN, Vodafone, and AirtelTigo MoMo in one API</li>
+          <li><strong>Instant disbursements:</strong> Pay vendors, freelancers, and customers via MoMo with one API call</li>
+          <li><strong>Card payments:</strong> Visa/Mastercard for customers who prefer bank cards</li>
+          <li><strong>Payment links:</strong> Generate a payment link in seconds — no website needed</li>
+          <li><strong>Recurring billing:</strong> Subscription payments with automatic retries</li>
+          <li><strong>Real-time webhooks:</strong> Instant notification when payments succeed or fail</li>
+        </ul>
+
+        <h2>The Technical Architecture</h2>
+        <div class="code-block">
+          Core Services:
+          - API Gateway:      Node.js + Express
+          - Database:         PostgreSQL (transactions) + Redis (idempotency)
+          - Queue:            Bull (payment job processing)
+          - Telecom Layer:    Hub2 / Paystack MoMo APIs
+          - Security:         AES-256 encryption, HMAC webhook signing
+          - Monitoring:       Grafana + custom alerting
+
+          Key Design Decisions:
+          - Idempotent API: duplicate requests never double-charge
+          - Async processing: webhooks for settlement, not polling
+          - Graceful degradation: provider failover between MoMo networks
+        </div>
+
+        <h2>The Hardest Problem: Reliability</h2>
+        <p>MoMo network APIs are notorious for inconsistency. A payment can succeed on the network but return an error to your server. A customer can be debited but your system shows a failure. Without careful engineering, these edge cases lead to angry customers and manual reconciliation nightmares.</p>
+        <p>We solved this through:</p>
+        <ol>
+          <li><strong>Idempotency keys:</strong> Every payment request is fingerprinted — retries never create duplicate charges</li>
+          <li><strong>Reconciliation jobs:</strong> Background jobs that verify pending payments directly with the telco</li>
+          <li><strong>Audit trails:</strong> Every state change is logged with timestamps for dispute resolution</li>
+          <li><strong>Graceful failure messages:</strong> Clear, specific error messages instead of generic "payment failed"</li>
+        </ol>
+
+        <blockquote>
+          A payment platform is only as good as its failure handling. Anyone can process a successful payment. The real engineering is in handling every way it can go wrong.
+        </blockquote>
+
+        <h2>KamarPay for Other Businesses</h2>
+        <p>What started as internal infrastructure is now available to other Ghanaian businesses. If you're building a digital product that needs payments, KamarPay offers:</p>
+        <ul>
+          <li>Simple REST API with comprehensive documentation</li>
+          <li>Dashboard for transaction monitoring and refunds</li>
+          <li>Competitive transaction fees</li>
+          <li>Local support in Ghana — no time zone gaps</li>
+        </ul>
+
+        <div class="key-takeaways">
+          <p>Interested in integrating KamarPay into your business? <strong>Contact us at kamartecsolutions@gmail.com</strong> to get early access.</p>
+        </div>
+      `,
+      author: "Derry Atta Bandoh",
+      authorRole: "Backend Developer",
+      authorImage: "/images/team/Derry.jpg",
+      date: "2025-08-10",
+      readTime: "9 min read",
+      category: "Web Development",
+      tags: ["KamarPay", "Payments", "FinTech", "Ghana", "MoMo", "API"],
+      image: "/images/blog/web-dev-future.jpg",
+      featured: true
+    },
+    {
+      id: 'getting-started-with-machine-learning',
+      title: "Getting Started with Machine Learning: A Beginner's Guide",
+      excerpt: "Demystifying machine learning for beginners — what it is, where to start, and how to build your first model.",
+      content: `
+        <h2>What Machine Learning Actually Is</h2>
+        <p>Machine learning (ML) is not magic, and it's not science fiction. It's a way of programming computers to learn from examples rather than explicit rules. Instead of writing code that says "if the email contains these words, it's spam," you show the computer thousands of examples of spam and non-spam emails, and it figures out the rules itself.</p>
+        <p>That's the core idea. Everything else — neural networks, transformers, gradient descent — is just increasingly sophisticated ways of doing that same fundamental thing.</p>
+
+        <h2>The Three Types of Machine Learning</h2>
+        <ul>
+          <li><strong>Supervised learning:</strong> You provide labelled examples (input + correct answer). The model learns to predict the answer for new inputs. Most practical ML is supervised. Examples: spam detection, image classification, price prediction.</li>
+          <li><strong>Unsupervised learning:</strong> You provide examples without labels. The model finds hidden patterns. Examples: customer segmentation, anomaly detection, topic modelling.</li>
+          <li><strong>Reinforcement learning:</strong> The model learns by trial and error, receiving rewards for good decisions. Used in game AI, robotics, and recommendation systems.</li>
+        </ul>
+
+        <h2>The Machine Learning Workflow</h2>
+        <ol>
+          <li><strong>Define the problem:</strong> What exactly are you trying to predict or classify?</li>
+          <li><strong>Collect data:</strong> Gather labelled examples relevant to your problem</li>
+          <li><strong>Explore the data:</strong> Understand its shape, distribution, and quality</li>
+          <li><strong>Prepare features:</strong> Clean, transform, and select the inputs your model will use</li>
+          <li><strong>Train a model:</strong> Feed the data to an algorithm and let it learn</li>
+          <li><strong>Evaluate:</strong> Measure performance on data the model hasn't seen</li>
+          <li><strong>Deploy:</strong> Integrate the model into your application</li>
+          <li><strong>Monitor:</strong> Track performance over time and retrain as needed</li>
+        </ol>
+
+        <h2>Your First ML Project: Predicting House Prices</h2>
+        <p>The classic beginner project is predicting house prices from features like size, location, and age. Here's the minimal code in Python:</p>
+        <div class="code-block">
+          from sklearn.linear_model import LinearRegression
+          from sklearn.model_selection import train_test_split
+          from sklearn.metrics import mean_absolute_error
+          import pandas as pd
+
+          # Load data
+          df = pd.read_csv('housing.csv')
+          X = df[['size_sqft', 'bedrooms', 'age_years']]
+          y = df['price']
+
+          # Split into train/test
+          X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+          # Train model
+          model = LinearRegression()
+          model.fit(X_train, y_train)
+
+          # Evaluate
+          predictions = model.predict(X_test)
+          print(f"MAE: {mean_absolute_error(y_test, predictions):,.0f}")
+        </div>
+
+        <h2>Key Concepts to Understand Early</h2>
+        <ul>
+          <li><strong>Overfitting:</strong> Your model memorizes training data instead of learning patterns. Solution: more data, simpler model, regularization.</li>
+          <li><strong>Underfitting:</strong> Your model is too simple to capture the patterns. Solution: more complex model, better features.</li>
+          <li><strong>Train/test split:</strong> Never evaluate on data you trained on. You'll think you're amazing until you deploy.</li>
+          <li><strong>Feature engineering:</strong> The quality of your input features often matters more than the model you choose.</li>
+        </ul>
+
+        <blockquote>
+          In practice, 80% of a data scientist's time is spent cleaning and preparing data. The actual model training takes minutes. Manage your expectations accordingly.
+        </blockquote>
+
+        <h2>Learning Resources</h2>
+        <ul>
+          <li><strong>Fast.ai:</strong> Hands-on approach, top-down learning — the best free ML course</li>
+          <li><strong>Kaggle:</strong> Practice on real datasets, join competitions, read notebooks</li>
+          <li><strong>Andrew Ng's ML Specialisation (Coursera):</strong> Strong mathematical foundation</li>
+          <li><strong>Scikit-learn documentation:</strong> Excellent tutorials with real examples</li>
+        </ul>
+
+        <div class="key-takeaways">
+          <p><strong>Start simple.</strong> Linear regression predicts prices. Logistic regression classifies spam. Decision trees explain themselves. Don't reach for neural networks until simpler models have failed you.</p>
+        </div>
+      `,
+      author: "Albert Kofi Segu",
+      authorRole: "Data Scientist",
+      authorImage: "/images/team/Albert.jpg",
+      date: "2025-07-20",
+      readTime: "8 min read",
+      category: "AI & Machine Learning",
+      tags: ["Machine Learning", "Python", "Data Science", "Beginners", "AI"],
+      image: "/images/blog/data-analytics.jpg",
+      featured: false
+    },
+    {
+      id: 'earlaw-horizon-building-international-projects',
+      title: "Going Global: Lessons from Building for UK and International Clients",
+      excerpt: "What KamarTec learned from delivering projects for EarlLaw Firm (UK) and Horizon Path Travels — timezone, trust, and technical quality.",
+      content: `
+        <h2>Our First International Contract</h2>
+        <p>When EarlLaw Firm reached out to KamarTec from the UK, we almost didn't reply. Could a team of young developers based at the University of Cape Coast really deliver a professional, high-stakes law firm website for a UK practice? We decided to find out.</p>
+        <p>Eighteen months later, EarlLaw Firm's website is live at <a href="https://earllawfirm.co" target="_blank" rel="noopener noreferrer">earllawfirm.co</a>, attracting clients and generating leads consistently. And we learned lessons that changed how we operate as an agency.</p>
+
+        <h2>Lesson 1: Timezone Discipline is Non-Negotiable</h2>
+        <p>UK clients are on GMT — 0 to 1 hour behind Ghana (GMT+0). For most of the year, the time difference is minimal. But "minimal" doesn't mean "irrelevant." We quickly learned:</p>
+        <ul>
+          <li>Schedule all critical meetings in writing, with timezones explicitly stated (never assume)</li>
+          <li>Send end-of-day progress updates before your client's morning starts — they'll arrive at work to good news</li>
+          <li>Response time expectations should be agreed upfront — we commit to 4-hour responses during business hours</li>
+          <li>Use async tools (Loom videos, detailed written updates) to reduce dependency on live calls</li>
+        </ul>
+
+        <h2>Lesson 2: International Clients Need Extraordinary Documentation</h2>
+        <p>When you build for local clients, gaps in communication can be filled with a quick in-person meeting. International clients don't have that option. Everything must be written down:</p>
+        <ul>
+          <li>Detailed project briefs with acceptance criteria for every feature</li>
+          <li>Written change orders for every scope addition — no informal "just add this quickly"</li>
+          <li>Version-controlled design files shared via Figma</li>
+          <li>Video walkthroughs of every deliverable before marking a milestone complete</li>
+        </ul>
+
+        <blockquote>
+          International clients pay for two things: quality code and peace of mind. The documentation is what delivers the peace of mind.
+        </blockquote>
+
+        <h2>Horizon Path Travels: A Different Challenge</h2>
+        <p>Horizon Path Travels (horizonpathtravels.co) was a different project — a travel agency website requiring real-time availability, booking flows, and an admin dashboard for managing packages. The client was detail-oriented and had specific UX expectations shaped by their experience with premium travel websites.</p>
+        <p>The main lessons here were around expectation setting:</p>
+        <ul>
+          <li>Share design mockups before writing any code — misalignment at wireframe stage is cheap; misalignment at build stage is expensive</li>
+          <li>Define "done" precisely — we now write explicit acceptance criteria for every screen</li>
+          <li>Test across devices in front of the client on video call — they see issues you've stopped noticing</li>
+        </ul>
+
+        <h2>How International Work Changed Our Quality Standards</h2>
+        <p>The pressure of international contracts forced us to raise our internal standards across the board. Practices we now apply to every project — local or international:</p>
+        <ul>
+          <li><strong>Code reviews:</strong> No code ships without a second developer reviewing it</li>
+          <li><strong>Staging environments:</strong> Every project gets a staging URL — changes are tested before going live</li>
+          <li><strong>Performance budgets:</strong> Pages must load under 3 seconds on a 3G connection</li>
+          <li><strong>Cross-browser testing:</strong> Chrome, Firefox, Safari, and mobile Chrome minimum</li>
+        </ul>
+
+        <h2>Can Ghanaian Tech Teams Compete Globally?</h2>
+        <p>Absolutely. The barrier to international work is not technical talent — Ghana has world-class developers. The barriers are trust (which is built through communication and documentation) and visibility (which is built through portfolio and reputation). Both are solvable.</p>
+
+        <div class="key-takeaways">
+          <p><strong>Our advice to Ghanaian tech teams</strong> looking for international clients: Document everything, communicate obsessively, and deliver something undeniably good on your first project. Word of mouth works across time zones too.</p>
+        </div>
+      `,
+      author: "Clement Obeng",
+      authorRole: "Lead Developer",
+      authorImage: "/images/team/Clement.jpg",
+      date: "2025-06-12",
+      readTime: "6 min read",
+      category: "Company",
+      tags: ["International", "Client Work", "UK", "Remote", "KamarTec"],
+      image: "/images/blog/web-dev-future.jpg",
+      featured: false
     }
   ];
 
@@ -891,7 +1658,7 @@ export default function BlogPostContent({ postId }: { postId: string }) {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[520px] opacity-100 mt-4 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'}`}>
               <div className="py-4 space-y-3 border-t border-gray-200 dark:border-gray-700">
                 <div className="relative mb-3">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
@@ -1205,16 +1972,7 @@ export default function BlogPostContent({ postId }: { postId: string }) {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
                   Subscribe to our newsletter and stay up to date with all events coming straight in your mailbox:
                 </p>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="Your email here"
-                    className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-                  />
-                  <button className="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600 hover:scale-110 transition-all shadow-lg">
-                    <ArrowRight size={20} />
-                  </button>
-                </div>
+                <NewsletterForm />
               </div>
             </div>
 

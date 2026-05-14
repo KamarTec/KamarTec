@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Calendar, Clock, User, Tag, Mail, ChevronRight } from 'lucide-react';
+import NewsletterForm from '../components/NewsletterForm';
 
 export default function BlogPage() {
   const [scrollY, setScrollY] = useState(0);
@@ -162,8 +163,8 @@ export default function BlogPage() {
       title: "The Power of Data Visualization: Turning Numbers into Stories",
       excerpt: "Learn how effective data visualization can communicate complex information clearly.",
       content: `Article about visualization principles, tools (Tableau, Power BI), best practices, examples.`,
-      author: "Albert Segu",
-      authorRole: "Data Analyst",
+      author: "Albert Kofi Segu",
+      authorRole: "Data Scientist",
       authorImage: "/images/team/Albert.jpg",
       date: "2024-12-05",
       readTime: "6 min read",
@@ -171,10 +172,112 @@ export default function BlogPage() {
       tags: ["Visualization", "Data", "Analytics"],
       image: "/images/blog/data-viz.png",
       featured: false
+    },
+    {
+      id: 'building-ghanas-digital-future-2026',
+      title: "Building Ghana's Digital Future: KamarTec's Vision for 2026",
+      excerpt: "How a team of young Ghanaian technologists are building world-class digital products from Cape Coast to the world.",
+      content: `KamarTec Solutions was born at the University of Cape Coast with a simple but powerful belief: that Africa deserves world-class technology built by Africans who understand the continent. In 2026, we're doubling down on that mission with expanded teams, new product lines, and deeper roots in the Ghanaian tech ecosystem.`,
+      author: "Clement Obeng",
+      authorRole: "Lead Full-Stack Developer",
+      authorImage: "/images/team/Clement.jpg",
+      date: "2026-01-10",
+      readTime: "7 min read",
+      category: "Company",
+      tags: ["Ghana", "Tech", "Africa", "KamarTec"],
+      image: "/images/blog/futuredev.jpg",
+      featured: true
+    },
+    {
+      id: 'how-we-built-nova-african-ai',
+      title: "How We Built NOVA — Africa's First Culturally-Aware AI Assistant",
+      excerpt: "The story behind building an AI that understands African languages, culture, and context from the ground up.",
+      content: `When we started building NOVA, we faced a challenge that most AI teams never encounter: building an assistant that doesn't just translate African languages, but truly understands the cultural nuance behind them. Here's our journey building the African AI assistant.`,
+      author: "Kanbros Kojo Antwi",
+      authorRole: "Cybersecurity & AI Engineer",
+      authorImage: "/images/team/Kanbros.jpg",
+      date: "2025-11-20",
+      readTime: "9 min read",
+      category: "AI & Machine Learning",
+      tags: ["AI", "NOVA", "Africa", "NLP", "Machine Learning"],
+      image: "/images/blog/cybersecurity.jpg",
+      featured: true
+    },
+    {
+      id: 'cybersecurity-tips-ghanaian-businesses',
+      title: "Cybersecurity Tips Every Ghanaian Business Should Know in 2026",
+      excerpt: "Practical, affordable cybersecurity measures that any small or medium Ghanaian business can implement today.",
+      content: `Ghana's digital economy is growing fast — and so are the threats targeting it. Mobile money fraud, phishing attacks, and data breaches affect thousands of Ghanaian businesses every year. Here are the most important cybersecurity practices you can implement right now, without breaking the bank.`,
+      author: "Kanbros Kojo Antwi",
+      authorRole: "Cybersecurity & AI Engineer",
+      authorImage: "/images/team/Kanbros.jpg",
+      date: "2025-10-05",
+      readTime: "8 min read",
+      category: "Security",
+      tags: ["Cybersecurity", "Ghana", "Small Business", "Security"],
+      image: "/images/blog/cybersecurity.jpg",
+      featured: false
+    },
+    {
+      id: 'from-idea-to-app-mahyp-story',
+      title: "From Idea to App: The MaHyp Development Story",
+      excerpt: "How KamarTec built a health platform connecting Ghanaians to healthcare providers — the challenges, lessons, and wins.",
+      content: `Healthcare access in Ghana remains a challenge, especially in rural areas. The MaHyp App was born from a simple question: what if booking a doctor's appointment was as easy as ordering food? Here's how we built it, what we got wrong, and what we learned along the way.`,
+      author: "Derry Atta Bandoh",
+      authorRole: "Backend Developer",
+      authorImage: "/images/team/Derry.jpg",
+      date: "2025-09-15",
+      readTime: "10 min read",
+      category: "Mobile Development",
+      tags: ["MaHyp", "Health Tech", "Flutter", "Ghana", "Hypertension"],
+      image: "/images/blog/mobile-trends.png",
+      featured: false
+    },
+    {
+      id: 'kamarpay-building-payment-infrastructure',
+      title: "KamarPay: Why We Built Our Own Payment Platform",
+      excerpt: "The engineering story behind building payment infrastructure for the Ghanaian market — MoMo, reliability, and lessons learned.",
+      author: "Derry Atta Bandoh",
+      authorRole: "Backend Developer",
+      authorImage: "/images/team/Derry.jpg",
+      date: "2025-08-10",
+      readTime: "9 min read",
+      category: "Web Development",
+      tags: ["KamarPay", "Payments", "FinTech", "Ghana", "MoMo", "API"],
+      image: "/images/blog/futuredev.jpg",
+      featured: true
+    },
+    {
+      id: 'getting-started-with-machine-learning',
+      title: "Getting Started with Machine Learning: A Beginner's Guide",
+      excerpt: "Demystifying machine learning for beginners — what it is, where to start, and how to build your first model in Python.",
+      author: "Albert Kofi Segu",
+      authorRole: "Data Scientist",
+      authorImage: "/images/team/Albert.jpg",
+      date: "2025-07-20",
+      readTime: "8 min read",
+      category: "AI & Machine Learning",
+      tags: ["Machine Learning", "Python", "Data Science", "Beginners", "AI"],
+      image: "/images/blog/data.jpg",
+      featured: false
+    },
+    {
+      id: 'earlaw-horizon-building-international-projects',
+      title: "Going Global: Lessons from Building for UK and International Clients",
+      excerpt: "What KamarTec learned from delivering projects for EarlLaw Firm (UK) and Horizon Path Travels — timezone, trust, and technical quality.",
+      author: "Clement Obeng",
+      authorRole: "Lead Developer",
+      authorImage: "/images/team/Clement.jpg",
+      date: "2025-06-12",
+      readTime: "6 min read",
+      category: "Company",
+      tags: ["International", "Client Work", "UK", "Remote", "KamarTec"],
+      image: "/images/blog/futuredev.jpg",
+      featured: false
     }
   ];
 
-  const categories = ['All', 'Web Development', 'Design', 'Data Analytics', 'Mobile Development', 'Security'];
+  const categories = ['All', 'Web Development', 'Design', 'Data Analytics', 'Mobile Development', 'Security', 'AI & Machine Learning', 'Company'];
   
   // Get all unique tags from all posts
   const allTags = Array.from(new Set(blogPosts.flatMap(post => post.tags)));
@@ -198,6 +301,8 @@ export default function BlogPage() {
       case 'Data Analytics': return 'bg-gradient-to-r from-blue-600 to-cyan-600';
       case 'Mobile Development': return 'bg-gradient-to-r from-green-600 to-teal-600';
       case 'Security': return 'bg-gradient-to-r from-red-600 to-orange-600';
+      case 'AI & Machine Learning': return 'bg-gradient-to-r from-violet-600 to-blue-600';
+      case 'Company': return 'bg-gradient-to-r from-yellow-500 to-orange-500';
       default: return 'bg-gradient-to-r from-purple-600 to-blue-600';
     }
   };
@@ -292,7 +397,7 @@ export default function BlogPage() {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[520px] opacity-100 mt-4 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'}`}>
               <div className="py-4 space-y-3 border-t border-gray-200 dark:border-gray-700">
                 <div className="relative mb-3">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
@@ -697,16 +802,7 @@ export default function BlogPage() {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
                   Join our community and get the latest updates directly in your inbox.
                 </p>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="Your email here"
-                    className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-                  />
-                  <button className="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600 hover:scale-110 transition-all shadow-lg">
-                    <ArrowRight size={20} />
-                  </button>
-                </div>
+                <NewsletterForm />
               </div>
             </div>
 

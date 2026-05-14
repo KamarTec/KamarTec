@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, Search, Facebook, Twitter, Linkedin, Github, Youtube, Menu, X, Moon, Sun, Mail, Phone, ArrowLeft, CheckCircle, Code, Smartphone, Globe, Palette, BarChart3, GraduationCap, Zap, Users, Calendar, Award, Shield, Star, FileText } from "lucide-react";
+import NewsletterForm from '../../components/NewsletterForm';
 
 export default function ServiceDetailPage() {
   const params = useParams();
@@ -252,7 +253,7 @@ export default function ServiceDetailPage() {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+            <div className={`md:hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[520px] opacity-100 mt-4 overflow-y-auto' : 'max-h-0 opacity-0 overflow-hidden'}`}>
               <div className="py-4 space-y-3 border-t border-gray-200 dark:border-gray-700">
                 <div className="relative mb-3">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
@@ -754,16 +755,7 @@ export default function ServiceDetailPage() {
                 <p className="text-gray-600 dark:text-gray-400 text-sm mb-6 leading-relaxed">
                   Subscribe to our newsletter and stay up to date with all events coming straight in your mailbox:
                 </p>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    placeholder="Your email here"
-                    className="flex-1 px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-full bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm"
-                  />
-                  <button className="bg-pink-500 text-white p-3 rounded-full hover:bg-pink-600 hover:scale-110 transition-all shadow-lg">
-                    <ArrowRight size={20} />
-                  </button>
-                </div>
+                <NewsletterForm />
               </div>
             </div>
 
