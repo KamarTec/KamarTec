@@ -532,12 +532,20 @@ export default function KamarTecHomePage() {
           {/* Tech stack marquee */}
           <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm border-t border-white/10 py-3 overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap select-none">
-              {[...techStack, ...techStack].map((tech, i) => (
-                <span key={i} className="inline-flex items-center gap-2.5 mx-5 text-white/50 text-xs font-semibold tracking-widest uppercase">
+              {techStack.map((tech, i) => (
+                <span key={`primary-${i}`} className="inline-flex items-center gap-2.5 mx-5 text-white/50 text-xs font-semibold tracking-widest uppercase">
                   <span className="w-1 h-1 bg-yellow-400/70 rounded-full flex-shrink-0" />
                   {tech}
                 </span>
               ))}
+              <div aria-hidden="true" className="contents">
+                {techStack.map((tech, i) => (
+                  <span key={`duplicate-${i}`} className="inline-flex items-center gap-2.5 mx-5 text-white/50 text-xs font-semibold tracking-widest uppercase">
+                    <span className="w-1 h-1 bg-yellow-400/70 rounded-full flex-shrink-0" />
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>
