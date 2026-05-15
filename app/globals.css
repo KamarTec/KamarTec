@@ -235,6 +235,40 @@ html {
 .gradient-border:hover::before { opacity: 1; }
 
 /* =========================================
+   HERO GRID
+   ========================================= */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+  animation: grid-pan 30s linear infinite;
+}
+@keyframes grid-pan {
+  from { background-position: 0 0; }
+  to   { background-position: 64px 64px; }
+}
+
+/* =========================================
+   MARQUEE
+   ========================================= */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: inline-flex;
+  width: max-content;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* =========================================
    CUSTOM SCROLLBAR
    ========================================= */
 ::-webkit-scrollbar { width: 6px; }
