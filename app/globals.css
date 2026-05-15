@@ -262,6 +262,12 @@ html {
   width: max-content;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
 /* =========================================
    CUSTOM SCROLLBAR
    ========================================= */
