@@ -10,6 +10,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import NewsletterForm from './components/NewsletterForm';
 
+const HERO_WORDS = ['World-Class Apps', 'Mobile Experiences', 'AI-Powered Platforms', 'Digital Solutions', 'Custom Software'];
+
 function useCountUp(target: number, duration = 1800) {
   const [count, setCount] = useState(0);
   const [active, setActive] = useState(false);
@@ -31,7 +33,11 @@ function useCountUp(target: number, duration = 1800) {
 }
 
 export default function KamarTecHomePage() {
-  const [heroSlide, setHeroSlide] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [typedText, setTypedText] = useState('');
+  const [wordIdx, setWordIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [scrollY, setScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,6 +61,42 @@ export default function KamarTecHomePage() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 2,
+        y: (e.clientY / window.innerHeight - 0.5) * 2,
+      });
+    };
+    window.addEventListener('mousemove', handleMouse, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMouse);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+    const word = HERO_WORDS[wordIdx];
+    const speed = isDeleting ? 40 : charIdx === word.length ? 2500 : 75;
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (charIdx < word.length) {
+          setTypedText(word.slice(0, charIdx + 1));
+          setCharIdx(c => c + 1);
+        } else {
+          setIsDeleting(true);
+        }
+      } else {
+        if (charIdx > 0) {
+          setTypedText(word.slice(0, charIdx - 1));
+          setCharIdx(c => c - 1);
+        } else {
+          setIsDeleting(false);
+          setWordIdx(w => (w + 1) % HERO_WORDS.length);
+        }
+      }
+    }, speed);
+    return () => clearTimeout(timer);
+  }, [isMounted, charIdx, isDeleting, wordIdx]);
 
   useEffect(() => {
     if (!isMounted) return;
@@ -155,6 +197,8 @@ export default function KamarTecHomePage() {
     "Data Science": "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300",
     "Cybersecurity & AI": "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300",
   };
+
+  const techStack = ['React', 'Next.js', 'Flutter', 'Python', 'Node.js', 'Firebase', 'TailwindCSS', 'TypeScript', 'AI / ML', 'Figma', 'React Native', 'PostgreSQL', 'FastAPI', 'Supabase'];
 
   const services = [
     { id: "software-development", title: "Software Dev't", color: "from-purple-600 to-orange-400", image: "/images/services/software_dev.jpg", icon: <Code2 size={20} /> },
@@ -305,100 +349,196 @@ export default function KamarTecHomePage() {
 
         {/* ── Hero Section ───────────────────────────────────────────────── */}
         <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-purple-700 to-blue-700 dark:from-red-800 dark:via-purple-900 dark:to-blue-900"></div>
+          {/* Base gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-red-700 via-purple-700 to-blue-800 dark:from-red-900 dark:via-purple-900 dark:to-blue-900" />
 
-          {/* Animated blobs */}
+          {/* Animated grid overlay */}
+          <div className="absolute inset-0 hero-grid" />
+
+          {/* Ambient blobs */}
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-20 right-20 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div className="absolute top-40 left-20 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-            <div className="absolute bottom-20 left-40 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
+            <div className="absolute -top-20 -right-20 w-[500px] h-[500px] bg-red-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
+            <div className="absolute top-1/3 -left-20 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-2000" />
+            <div className="absolute -bottom-20 left-1/3 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
+            <div className="absolute bottom-1/3 right-1/4 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-1000" />
           </div>
 
-          {/* Floating geometric rings */}
+          {/* Geometric floaters */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-white/20 rounded-full animate-float"></div>
-            <div className="absolute top-1/3 right-1/3 w-16 h-16 border-2 border-yellow-300/30 rounded-full animate-float animation-delay-1000"></div>
-            <div className="absolute bottom-1/4 left-1/5 w-24 h-24 border-2 border-pink-300/20 rounded-full animate-float animation-delay-2000"></div>
-            <div className="absolute top-2/3 right-1/5 w-48 h-48 border border-white/10 rounded-full animate-rotate-slow"></div>
-            <div className="absolute top-1/2 left-1/3 w-8 h-8 bg-yellow-400/40 rounded-full animate-float animation-delay-3000"></div>
-            <div className="absolute bottom-1/3 right-1/2 w-6 h-6 bg-pink-400/40 rounded-full animate-float animation-delay-500"></div>
+            <div className="absolute top-1/4 right-[15%] w-52 h-52 border border-white/10 rounded-full animate-rotate-slow" />
+            <div className="absolute top-[35%] right-[30%] w-20 h-20 border border-yellow-300/20 rounded-full animate-rotate-slow" style={{ animationDirection: 'reverse', animationDuration: '12s' }} />
+            <div className="absolute bottom-1/3 left-[12%] w-32 h-32 border border-pink-300/15 rounded-full animate-rotate-slow" style={{ animationDuration: '28s' }} />
+            <div className="absolute top-[25%] left-[18%] w-3 h-3 bg-yellow-400/70 rounded-full animate-float" />
+            <div className="absolute top-[65%] right-[18%] w-2 h-2 bg-pink-400/70 rounded-full animate-float animation-delay-1000" />
+            <div className="absolute top-[45%] left-[44%] w-2 h-2 bg-blue-300/70 rounded-full animate-float animation-delay-2000" />
+            <div className="absolute top-[30%] right-[22%] w-4 h-4 bg-orange-400/40 rounded-full animate-float animation-delay-3000" />
+            <div className="absolute top-[80%] right-[35%] w-2 h-2 bg-yellow-300/60 rounded-full animate-float animation-delay-500" />
+            <div className="absolute top-[55%] left-[30%] w-3 h-3 bg-purple-300/50 rounded-full animate-float animation-delay-2000" />
+            <div className="absolute top-[22%] left-[32%] w-1.5 h-1.5 bg-white/80 rounded-full animate-ping-slow" />
+            <div className="absolute bottom-[28%] right-[20%] w-1.5 h-1.5 bg-yellow-300/80 rounded-full animate-ping-slow animation-delay-1000" />
+            <div className="absolute top-[60%] right-[32%] w-1 h-1 bg-pink-300/80 rounded-full animate-ping-slow animation-delay-2000" />
           </div>
 
-          {/* Bottom corner decoration */}
-          <div className={`absolute w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-gradient-to-br from-orange-400 to-yellow-300 rounded-tl-full blur-2xl transition-all duration-1000 ${heroSlide === 0 ? 'bottom-0 left-0 opacity-40' : 'bottom-0 right-0 opacity-40'}`}></div>
+          {/* Mouse-parallax glow orb */}
+          <div
+            className="absolute right-[8%] top-[20%] w-[440px] h-[440px] rounded-full bg-gradient-to-br from-orange-400/20 to-yellow-300/10 blur-3xl pointer-events-none transition-transform duration-700"
+            style={{ transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -30}px)` }}
+          />
 
-          {/* Hero image */}
-          <div className={`absolute top-20 right-0 w-1/2 h-2/3 hidden lg:block transition-all duration-700 ${heroSlide === 0 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'}`}>
-            <div className="relative w-full h-full">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 via-orange-500 to-red-500 rounded-bl-full opacity-80"></div>
-              <img src="/images/hero/Hero_small.jpg" alt="Team collaboration" className="absolute top-10 right-10 w-4/5 h-4/5 object-cover rounded-3xl shadow-2xl" loading="lazy" />
-            </div>
-          </div>
-
+          {/* Main layout */}
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 w-full">
-            {/* Slide 1 */}
-            <div className={`transition-all duration-700 transform ${heroSlide === 0 ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-full absolute'}`}>
-              <div className="max-w-2xl">
-                <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-6 animate-fade-in">
-                  <span className="bg-red-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium shadow-lg">KAMARTEC</span>
-                  <span className="text-white font-medium text-xs sm:text-base">SOLUTIONS</span>
-                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs flex items-center gap-1 backdrop-blur-sm">
-                    <Shield size={12} /> Legally Registered
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center">
+
+              {/* Left: Copy */}
+              <div>
+                <div className="flex flex-wrap items-center gap-3 mb-5 animate-fade-in">
+                  <span className="flex items-center gap-1.5 bg-green-500/20 border border-green-400/40 text-green-300 px-3 py-1.5 rounded-full text-xs font-semibold backdrop-blur-sm">
+                    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse inline-block" />
+                    Taking projects now
+                  </span>
+                  <span className="bg-white/10 text-white/70 px-3 py-1.5 rounded-full text-xs flex items-center gap-1.5 backdrop-blur-sm border border-white/10">
+                    <Shield size={11} /> Legally Registered · Ghana
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-4 sm:mb-6 leading-tight animate-slide-up">
-                  We Are KamarTec, Your Best Solution To All Your Tech Needs
+
+                <div className="mb-5 animate-slide-up">
+                  <span className="bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-black tracking-widest shadow-lg shadow-red-500/40 uppercase">
+                    KamarTec Solutions
+                  </span>
+                </div>
+
+                <h1 className="text-4xl sm:text-5xl lg:text-[5.2rem] font-black text-white mb-6 leading-[1.05] animate-slide-up animation-delay-100">
+                  We Build<br />
+                  <span className="relative inline-block">
+                    <span className="bg-gradient-to-r from-yellow-300 via-orange-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
+                      {typedText || ' '}
+                    </span>
+                    <span className="text-yellow-300 animate-cursor-blink ml-0.5 font-thin">|</span>
+                  </span>
+                  <br />
+                  <span className="text-white/85">That Matter.</span>
                 </h1>
-                <p className="text-white/90 text-sm sm:text-base lg:text-lg mb-6 sm:mb-8 leading-relaxed animate-slide-up animation-delay-200">
-                  Ghana's premier tech agency — building world-class apps, websites, and digital solutions.
-                  From mobile development to AI-powered platforms, we turn your vision into reality.
+
+                <p className="text-white/75 text-base sm:text-lg mb-8 leading-relaxed animate-slide-up animation-delay-200 max-w-xl">
+                  Ghana's premier tech agency — mobile apps, web platforms, AI tools, and digital brands.
+                  We turn ambitious visions into products the world notices.
                 </p>
-                <div className="flex flex-wrap gap-4 animate-slide-up animation-delay-400">
-                  <button
-                    onClick={() => setHeroSlide(1)}
-                    className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-yellow-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center gap-2 group text-sm sm:text-base">
-                    LEARN MORE <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                  </button>
-                  <Link href="/contact" className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-purple-700 transition-all duration-300 text-sm sm:text-base">
-                    GET A QUOTE
+
+                <div className="flex flex-wrap gap-4 mb-10 animate-slide-up animation-delay-300">
+                  <Link
+                    href="/contact"
+                    className="group relative overflow-hidden bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-black hover:shadow-2xl hover:shadow-yellow-400/40 hover:scale-105 transition-all duration-300 flex items-center gap-2 text-sm sm:text-base"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      START A PROJECT <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                   </Link>
+                  <Link
+                    href="/portfolio"
+                    className="border-2 border-white/40 text-white px-8 py-4 rounded-full font-bold hover:bg-white/10 hover:border-white/70 transition-all duration-300 text-sm sm:text-base backdrop-blur-sm"
+                  >
+                    VIEW OUR WORK
+                  </Link>
+                </div>
+
+                <div className="flex flex-wrap gap-x-8 gap-y-3 animate-fade-in animation-delay-400">
+                  {[['50+', 'Projects Shipped'], ['30+', 'Happy Clients'], ['9', 'Team Experts'], ['3+', 'Years Active']].map(([n, l]) => (
+                    <div key={l} className="flex items-baseline gap-1.5">
+                      <span className="text-2xl sm:text-3xl font-black text-yellow-300">{n}</span>
+                      <span className="text-white/50 text-xs">{l}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
 
-            {/* Slide 2 */}
-            <div className={`transition-all duration-700 transform ${heroSlide === 1 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full absolute'}`}>
-              <div className="max-w-2xl">
-                <div className="flex flex-wrap items-center gap-2 mb-4 sm:mb-6">
-                  <span className="bg-red-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-medium shadow-lg">KAMARTEC</span>
-                  <span className="text-white font-medium text-xs sm:text-base">SOLUTIONS</span>
+              {/* Right: Visual stack */}
+              <div className="hidden lg:block relative h-[540px]">
+                {/* Main image — moves opposite to mouse for depth */}
+                <div
+                  className="absolute inset-0 flex items-center justify-center transition-transform duration-500"
+                  style={{ transform: `translate(${mousePos.x * -15}px, ${mousePos.y * -10}px)` }}
+                >
+                  <div className="relative w-[340px] h-[430px] animate-float-slow">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-400/50 via-red-500/30 to-purple-600/50 rounded-3xl blur-xl scale-90" />
+                    <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl border border-white/20">
+                      <img src="/images/hero/Hero_small.jpg" alt="KamarTec team" className="w-full h-full object-cover" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-purple-900/80 via-transparent to-transparent" />
+                      <div className="absolute bottom-4 left-4 right-4 glass rounded-xl p-3">
+                        <div className="text-white font-bold text-sm">KamarTec Team</div>
+                        <div className="text-white/60 text-xs">Cape Coast · Ghana</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-white text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 animate-fade-in leading-relaxed">
-                  What software application do you wish to have on your computer and mobile device? KamarTec has it all.
-                </p>
-                <p className="text-white text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 animate-fade-in animation-delay-200 leading-relaxed">
-                  We also teach people with passion to learn anything in Tech — Graphic design, Mobile and web app development, Data Science, Cybersecurity, and more.
-                </p>
-                <p className="text-yellow-300 text-xl sm:text-2xl lg:text-3xl font-bold mb-6 sm:mb-8 animate-pulse">
-                  Name your problem and the solution is already there.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <button onClick={() => setHeroSlide(0)} className="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-yellow-300 hover:shadow-2xl hover:scale-105 transition-all duration-300 text-sm sm:text-base">
-                    BACK HOME
-                  </button>
-                  <Link href="/portfolio" className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-medium hover:bg-white hover:text-purple-700 transition-all duration-300 text-sm sm:text-base">
-                    VIEW WORK
-                  </Link>
+
+                {/* Floating card: Projects */}
+                <div
+                  className="absolute top-8 right-0 transition-transform duration-300"
+                  style={{ transform: `translate(${mousePos.x * 16}px, ${mousePos.y * 10}px)` }}
+                >
+                  <div className="glass rounded-2xl p-4 shadow-2xl w-44 animate-float animation-delay-500">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-8 h-8 bg-green-400/20 rounded-lg flex items-center justify-center">
+                        <TrendingUp size={14} className="text-green-400" />
+                      </div>
+                      <span className="text-white/70 text-xs font-medium">Projects Done</span>
+                    </div>
+                    <div className="text-3xl font-black text-white">50<span className="text-yellow-300">+</span></div>
+                    <div className="text-green-400 text-xs mt-1 flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse inline-block" />
+                      Still growing
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating card: Rating */}
+                <div
+                  className="absolute bottom-12 left-0 transition-transform duration-300"
+                  style={{ transform: `translate(${mousePos.x * -14}px, ${mousePos.y * 16}px)` }}
+                >
+                  <div className="glass rounded-2xl p-4 shadow-2xl w-48 animate-float animation-delay-2000">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="w-8 h-8 bg-yellow-400/20 rounded-lg flex items-center justify-center">
+                        <Star size={14} className="text-yellow-400" fill="currentColor" />
+                      </div>
+                      <span className="text-white/70 text-xs font-medium">Client Rating</span>
+                    </div>
+                    <div className="flex gap-0.5 mb-1.5">
+                      {[1,2,3,4,5].map(s => <Star key={s} size={13} className="text-yellow-400" fill="currentColor" />)}
+                    </div>
+                    <div className="text-white/55 text-xs">30+ happy clients</div>
+                  </div>
+                </div>
+
+                {/* Floating code card */}
+                <div
+                  className="absolute top-[42%] -right-2 transition-transform duration-300"
+                  style={{ transform: `translate(${mousePos.x * 22}px, ${mousePos.y * -12}px)` }}
+                >
+                  <div className="glass rounded-2xl p-3.5 shadow-2xl w-36 animate-float animation-delay-3000">
+                    <div className="font-mono text-[10px] leading-[1.7]">
+                      <span className="text-purple-300">const</span><span className="text-white/60"> app </span><span className="text-white/40">=</span><br />
+                      <span className="text-white/40 pl-2">await </span><span className="text-yellow-300">KamarTec</span><br />
+                      <span className="text-blue-300 pl-2">.build(</span><span className="text-orange-300">idea</span><span className="text-blue-300">)</span><br />
+                      <span className="text-green-400">{'// ✓ Shipped!'}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Slide dots */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2">
-            {[0, 1].map(i => (
-              <button key={i} onClick={() => setHeroSlide(i)} className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${heroSlide === i ? 'bg-yellow-400 w-8' : 'bg-white/50'}`} aria-label={`Slide ${i + 1}`} />
-            ))}
+          {/* Tech stack marquee */}
+          <div className="absolute bottom-0 left-0 right-0 bg-black/40 backdrop-blur-sm border-t border-white/10 py-3 overflow-hidden">
+            <div className="flex animate-marquee whitespace-nowrap select-none">
+              {[...techStack, ...techStack].map((tech, i) => (
+                <span key={i} className="inline-flex items-center gap-2.5 mx-5 text-white/50 text-xs font-semibold tracking-widest uppercase">
+                  <span className="w-1 h-1 bg-yellow-400/70 rounded-full flex-shrink-0" />
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
 
